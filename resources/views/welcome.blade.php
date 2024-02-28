@@ -17,7 +17,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Portfolio de Mbassi Loic Aron - Développeur Web -">
-  <meta name="keywords" content="Cameroun,ENSPY,Intelligence Artificielle ,développeur web, portfolio, Laravel, PHP">
+  <meta name="keywords" content="Cameroun,ENSPY,Intelligence Artificielle,full,full stack, full-stack,fullstack ,développeur web, portfolio, Laravel, PHP">
   <meta name="author" content="Mbassi Ewolo Loic Aron">
   <title>Mbassi Loic Aron</title>
 
@@ -29,7 +29,7 @@
   <!--
     - custom css link
   -->
-  <link rel="styleheet" href="{{asset('assets/css/style.css')}}">
+  <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 
   <!--
     - google font link
@@ -59,13 +59,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sidebar-info">
 
         <figure class="avatar-box">
-          <img src="{{asset('assets/images/my-avatar.png')}}" alt="Mbassi Loic Aron" width="80">
+          {{-- <img src="{{asset('assets/images/my-avatar.png')}}" alt="Mbassi Loic Aron" width="80"> --}}
+          <img src="{{asset('assets/images/utilisateur.png')}}" alt="Mbassi Loic Aron" width="80">
+
         </figure>
 
-        <div class="info-content">
           <h1 class="name" title="Mbassi Loic Aron">Mbassi Loic Aron</h1>
 
-          <p class="title">Web developer</p>
+          <p class="title">Developpeur Web Full Stack</p>
         </div>
 
         <button class="info_more-btn" data-sidebar-btn>
@@ -161,7 +162,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </a>
           </li>
           <li class="social-item">
-            <a href="https://wa.me/656820591" class="social-link" >
+            <a href="https://wa.me/656820591" class="social-link" target="_blank" >
               <ion-icon name="logo-whatsapp"></ion-icon>
             </a>
           </li>
@@ -238,19 +239,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </header>
 
         <section class="about-text">
-          <p>
-            I'm Creative Director and UI/UX Designer from Sydney, Australia, working in web development and print media.
-            I enjoy
-            turning complex problems into simple, beautiful and intuitive designs.
-          </p>
-
-          <p>
-            My job is to build your website so that it is functional and user-friendly but at the same time attractive.
-            Moreover, I
-            add personal touch to your product and make sure that is eye-catching and easy to use. My aim is to bring
-            across your
-            message and identity in the most creative way. I created web design for many famous brand companies.
-          </p>
+        <p>
+            Je suis un développeur web fullstack passionné par l'architecture backend, le machine learning et la modélisation de bases de données. Basé à Yaoundé, Cameroun,<br>
+            J'excelle dans la conception de solutions web qui offrent une expérience utilisateur fluide, tout en priorisant la performance et l'évolutivité. Ma force réside dans la transformation de défis techniques complexes en applications intuitives et conviviales.
+        </p>
+        <P>
+            Modélisation de bases de données: Compétence en modélisation conceptuelle, normalisation et optimisation de schémas pour les bases de données SQL.
+        </P>
+             {{-- et des pipelines de traitement de données optimisés. --}}
         </section>
 
 
@@ -260,7 +256,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <section class="service">
 
-          <h3 class="h3 service-title">What i'm doing</h3>
+          <h3 class="h3 service-title">Ceque je fait</h3>
 
           <ul class="service-list">
 
@@ -272,10 +268,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">Web design</h4>
+                <h4 class="h4 service-item-title">Développement Backend</h4>
 
                 <p class="service-item-text">
-                  The most modern and high-quality design made at a professional level.
+                    Maîtrise des langages backend  Python, PHP. Je conçois des environnements côté serveur robustes et efficaces, des APIs robustes.
                 </p>
               </div>
 
@@ -284,14 +280,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="{{asset('assets/images/icon-dev.svg')}}" alt="Web development icon" width="40">
+                <img src="{{asset('assets/images/icon-dev.svg')}}" alt="developpement web icon" width="40">
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">Web development</h4>
+                <h4 class="h4 service-item-title">Capacité Fullstack</h4>
 
                 <p class="service-item-text">
-                  High-quality development of sites at the professional level.
+                    Compétences front-end (ReactJS, NextJs) lorsque cela est nécessaire pour réaliser des projets web complets.
                 </p>
               </div>
 
@@ -300,30 +296,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="{{asset('assets/images/icon-app.svg')}}" alt="mobile app icon" width="40">
+                <img src="{{asset('assets/images/icon-dev.svg')}}" alt="mobile app icon" width="40">
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">Mobile apps</h4>
+                <h4 class="h4 service-item-title">Machine Learning</h4>
 
                 <p class="service-item-text">
-                  Professional development of applications for iOS and Android.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="{{asset('assets/images/icon-photo.svg')}}" alt="camera icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Photography</h4>
-
-                <p class="service-item-text">
-                  I make high-quality photos of any category at a professional level.
+                    Expérimenté dans l'application d'algorithmes de ML (classification, régression) pour construire des fonctionnalités intelligentes et tirer des enseignements à partir des données.
                 </p>
               </div>
 
@@ -340,7 +320,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <section class="testimonials">
 
-          <h3 class="h3 testimonials-title">Testimonials</h3>
+          <h3 class="h3 testimonials-title">Temoignages</h3>
 
           <ul class="testimonials-list has-scrollbar">
 
@@ -348,46 +328,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <div class="content-card" data-testimonials-item>
 
                 <figure class="testimonials-avatar-box">
-                  <img src="{{asset('assets/images/avatar-1.png')}}" alt="Daniel lewis" width="60" data-testimonials-avatar>
+                  <img src="{{asset('assets/images/avatar-4.png')}}" alt="Daniel lewis" width="60" data-testimonials-avatar>
                 </figure>
 
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Daniel lewis</h4>
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Louis Paul ZEBAZE</h4>
 
                 <div class="testimonials-text" data-testimonials-text>
                   <p>
-                    Loic was hired to create a corporate identity. We were very pleased with the work done. he has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                        Loic est un professionnel passionné par la programmation. Il est un professionnel capable de travailler en équipe et a une grande capacité d’adaptation aux changements du temps.J'ai travaillé avec Lui pendant plus de six mois pour mon site de E-commerce Bazel Square.
+                        Me contacter a traver mon site web : https://www.bazelsquare.com , et je suis certain de vous recevoir dans un délai record !
                   </p>
                 </div>
 
               </div>
             </li>
 
-            <li class="testimonials-item">
+             <li class="testimonials-item">
               <div class="content-card" data-testimonials-item>
 
                 <figure class="testimonials-avatar-box">
-                  <img src="{{asset('assets/images/avatar-2.png')}}" alt="Jessica miller" width="60" data-testimonials-avatar>
+                  <img src="{{asset('assets/images/avatar-1.png')}}" alt="Jessica miller" width="60" data-testimonials-avatar>
                 </figure>
 
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Jessica miller</h4>
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Essah Mama Francky</h4>
 
                 <div class="testimonials-text" data-testimonials-text>
                   <p>
-                    Loic was hired to create a corporate identity. We were very pleased with the work done. he has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                    Loic est le comcepteur de mon site web pour l’agence de marketing King Digital. Je suis très satisfaite de l'expérience que j'ai eue avec vous ! Me contacter au num : +237 653 53 14 07 ou via le site web King digital : https://www.kingdigital.bazelsquare.com
                   </p>
                 </div>
 
               </div>
             </li>
-
+{{--
             <li class="testimonials-item">
               <div class="content-card" data-testimonials-item>
 
@@ -414,7 +387,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <div class="content-card" data-testimonials-item>
 
                 <figure class="testimonials-avatar-box">
-                  <img src="{{asset('assets/images/avatar-4.png')}}" alt="Henry william" width="60" data-testimonials-avatar>
+                  <img src="{{asset('assets/images/avatar-1.png')}}" alt="Henry william" width="60" data-testimonials-avatar>
                 </figure>
 
                 <h4 class="h4 testimonials-item-title" data-testimonials-title>Henry william</h4>
@@ -430,7 +403,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
 
               </div>
-            </li>
+            </li> --}}
 
           </ul>
 
@@ -562,41 +535,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title">University school of the arts</h4>
+                <h4 class="h4 timeline-item-title">Ecole Nationale Superieure  Polytechnique Yaounde</h4>
 
-              <span>2007 — 2008</span>
+                <span>2023 — Present</span>
+
+                <p class="timeline-text">
+                  Troisième Année au Génie Informatique
+                </p>
+              </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Ecole Nationale Superieure  Polytechnique Yaounde</h4>
+
+              <span>2021 — 2023</span>
 
               <p class="timeline-text">
-                Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
-                quas molestias
-                exceptur.
+                MSP (Mathematiques et Sciences Physiques): Classes préparatoires pour la formation d'Ingenieur .
               </p>
 
             </li>
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title">New york academy of art</h4>
+              <h4 class="h4 timeline-item-title">Faculté des sciences de l'université de Yaoundé I</h4>
 
-              <span>2006 — 2007</span>
+              <span>2020-2021</span>
 
               <p class="timeline-text">
-                Ratione voluptatem sequi nesciunt, facere quisquams facere menda ossimus, omnis voluptas assumenda est
-                omnis..
+               Licence I en filière Maths-Info : Mension Assez-Bien (AB).
               </p>
 
             </li>
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title">High school of art and design</h4>
+              <h4 class="h4 timeline-item-title">Baccalauréat en Mathématiques et Sciences Physiques - Lycée Nkolnda - Yaoundé</h4>
 
-              <span>2002 — 2004</span>
+              <span>2019-2020</span>
 
               <p class="timeline-text">
-                Duis aute irure dolor in reprehenderit in voluptate, quila voluptas mag odit aut fugit, sed consequuntur
-                magni dolores
-                eos.
+                Baccalauréat C : Mension Assez-Bien (AB)
               </p>
 
             </li>
@@ -619,42 +598,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title">Creative director</h4>
+                <h4 class="h4 timeline-item-title">Développeur web Full-Stack freelance</h4>
 
-              <span>2015 — Present</span>
+                <span>2022 - Aujourd'hui</span>
+
+                <p class="timeline-text">
+                    Je travaille sur des
+                </p>
+
+              </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Stage de 3 mois chez Togettech&LegionWeb.</h4>
+
+              <span>2022( juin - Septembre )</span>
 
               <p class="timeline-text">
-                Nemo enim ipsam voluptatem blanditiis praesentium voluptum delenit atque corrupti, quos dolores et qvuas
-                molestias
-                exceptur.
+               Stage en developpement Web et Mobile chez
               </p>
 
             </li>
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title">Art director</h4>
+              <h4 class="h4 timeline-item-title">2 eme Prix du concours projets 8 mars 2023</h4>
 
-              <span>2013 — 2015</span>
-
-              <p class="timeline-text">
-                Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
-                quas molestias
-                exceptur.
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Web designer</h4>
-
-              <span>2010 — 2013</span>
+              <span>Mars 2023</span>
 
               <p class="timeline-text">
-                Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
-                quas molestias
-                exceptur.
+                Model de classification automatique des vidéos et des images à caractère violent utilisant le Deep Learning
               </p>
 
             </li>
@@ -662,6 +635,58 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </ol>
 
         </section>
+        <section class="timeline">
+
+            <div class="title-wrapper">
+              <div class="icon-box">
+                <ion-icon name="book-outline"></ion-icon>
+              </div>
+
+              <h3 class="h3">Domaines d'expertise</h3>
+            </div>
+
+            <ol class="timeline-list">
+
+              <li class="timeline-item">
+
+                  <h4 class="h4 timeline-item-title">Laravel</h4>
+
+                  <span>2022 - Aujourd'hui</span>
+
+                  <p class="timeline-text">
+                    Framework PHP robuste et populaire pour le développement web fullstack.
+                  </p>
+
+                </li>
+
+              <li class="timeline-item">
+
+                <h4 class="h4 timeline-item-title">HTML/CSS</h4>
+                <p class="timeline-text">
+                    <span>HTML/CSS</span> Langages fondamentaux du web pour la création de structures et de styles de pages web.
+                    <span>JavaScript</span>Langage de programmation côté client pour des interactions et animations web.
+                    <span>Bases de données MySQL</span>Stockage et gestion des données pour les applications web.
+                    <span>Responsive design</span>Adaptation des sites web à tous les supports (ordinateurs, tablettes, mobiles).
+                    <span>SEO (Search Engine Optimization)</span> Optimisation des sites web pour les moteurs de recherche.
+                </p>
+
+              </li>
+
+              <li class="timeline-item">
+
+                <h4 class="h4 timeline-item-title">ReactJs</h4>
+
+                <span>2023 — Aujourd'hui</span>
+
+                <p class="timeline-text">
+                  Librairie Javacript pour La conception des interfaces web robustes et rapides
+                </p>
+
+              </li>
+
+            </ol>
+
+          </section>
 
         <section class="skill">
 
@@ -672,7 +697,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li class="skills-item">
 
               <div class="title-wrapper">
-                <h5 class="h5">Web design</h5>
+                <h5 class="h5">Developpement Web</h5>
                 <data value="80">80%</data>
               </div>
 
@@ -681,45 +706,67 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
 
             </li>
+            <li class="skills-item">
 
+                <div class="title-wrapper">
+                  <h5 class="h5">Php</h5>
+                  <data value="80">80%</data>
+                </div>
+
+                <div class="skill-progress-bg">
+                  <div class="skill-progress-fill" style="width: 80%;"></div>
+                </div>
+
+              </li>
+              <li class="skills-item">
+
+                <div class="title-wrapper">
+                  <h5 class="h5">Laravel</h5>
+                  <data value="70">70%</data>
+                </div>
+
+                <div class="skill-progress-bg">
+                  <div class="skill-progress-fill" style="width: 70%;"></div>
+                </div>
+
+              </li>
+            <li class="skills-item">
+
+                <div class="title-wrapper">
+                  <h5 class="h5">WordPress</h5>
+                  <data value="50">50%</data>
+                </div>
+
+                <div class="skill-progress-bg">
+                  <div class="skill-progress-fill" style="width: 50%;"></div>
+                </div>
+
+              </li>
+              <li class="skills-item">
+
+                <div class="title-wrapper">
+                  <h5 class="h5">React</h5>
+                  <data value="40">40%</data>
+                </div>
+
+                <div class="skill-progress-bg">
+                  <div class="skill-progress-fill" style="width: 40%;"></div>
+                </div>
+
+              </li>
             <li class="skills-item">
 
               <div class="title-wrapper">
-                <h5 class="h5">Graphic design</h5>
-                <data value="70">70%</data>
+                <h5 class="h5">Machine Learning</h5>
+                <data value="30">30%</data>
               </div>
 
               <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 70%;"></div>
+                <div class="skill-progress-fill" style="width: 30%;"></div>
               </div>
 
             </li>
 
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Branding</h5>
-                <data value="90">90%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">WordPress</h5>
-                <data value="50">50%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 50%;"></div>
-              </div>
-
-            </li>
 
           </ul>
 
@@ -748,18 +795,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li class="filter-item">
               <button class="active" data-filter-btn>All</button>
             </li>
-
             <li class="filter-item">
+                <button data-filter-btn>developpement web</button>
+              </li>
+
+            {{-- <li class="filter-item">
               <button data-filter-btn>Web design</button>
-            </li>
+            </li> --}}
 
             <li class="filter-item">
-              <button data-filter-btn>Applications</button>
+              <button data-filter-btn>intelligence artificielle</button>
             </li>
 
-            <li class="filter-item">
-              <button data-filter-btn>Web development</button>
-            </li>
 
           </ul>
 
@@ -767,7 +814,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             <button class="filter-select" data-select>
 
-              <div class="select-value" data-selecct-value>Select category</div>
+              <div class="select-value" data-selecct-value>Choisir la categorie</div>
 
               <div class="select-icon">
                 <ion-icon name="chevron-down"></ion-icon>
@@ -780,18 +827,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <li class="select-item">
                 <button data-select-item>All</button>
               </li>
-
               <li class="select-item">
+                <button data-select-item>developpement web</button>
+              </li>
+              {{-- <li class="select-item">
                 <button data-select-item>Web design</button>
-              </li>
+              </li> --}}
 
               <li class="select-item">
-                <button data-select-item>Applications</button>
+                <button data-select-item>intelligence ar</button>
               </li>
 
-              <li class="select-item">
-                <button data-select-item>Web development</button>
-              </li>
+
 
             </ul>
 
@@ -799,7 +846,60 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           <ul class="project-list">
 
-            <li class="project-item  active" data-filter-item data-category="web development">
+            <li class="project-item  active" data-filter-item data-category="developpement web">
+              <a href="https://www.bazelsquare.com/contact" target="_blank">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="{{asset('assets/images/Bazelsquare.png')}}" alt="Bazelsquare" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Bazelsquare</h3>
+
+                <p class="project-category">developpement web</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="developpement web">
+              <a href="https://www.kingdigital.bazelsquare.com/contactez-nous" target="_blank">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="{{asset('assets/images/King_digital.png')}}" alt="king digital" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">King Digital</h3>
+
+                <p class="project-category">Developpement Web</p>
+
+              </a>
+            </li>
+            <li class="project-item  active" data-filter-item data-category="intelligence artificielle">
+                <a href="" target="_blank">
+
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+
+                    <img src="{{asset('assets/images/ArticialI.png')}}" alt="king digital" loading="lazy">
+                  </figure>
+
+                  <h3 class="project-title">Inaya</h3>
+
+                  <p class="project-category">Intelligence Artificielle</p>
+
+                </a>
+              </li>
+
+            <li class="project-item  active" data-filter-item data-category="developpement web">
               <a href="#">
 
                 <figure class="project-img">
@@ -807,17 +907,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="{{asset('assets/images/project-1.jpg')}}" alt="finance" loading="lazy">
+                  <img src="{{asset('assets/images/SosDocta.png')}}" alt="sos docta" loading="lazy">
                 </figure>
 
-                <h3 class="project-title">Finance</h3>
+                <h3 class="project-title">SOS DOCTA</h3>
 
-                <p class="project-category">Web development</p>
+                <p class="project-category">Site Web De consultation en ligne</p>
 
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="web development">
+            <li class="project-item  active" data-filter-item data-category="developpement web">
               <a href="#">
 
                 <figure class="project-img">
@@ -825,17 +925,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="{{asset('assets/images/project-2.png')}}" alt="orizon" loading="lazy">
+                  <img src="{{asset('assets/images/quebec.png')}}" alt="brawlhalla" loading="lazy">
                 </figure>
 
-                <h3 class="project-title">Orizon</h3>
+                <h3 class="project-title">Nettoi Quebec</h3>
 
-                <p class="project-category">Web development</p>
+                <p class="project-category">Site Web</p>
 
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="web design">
+            <li class="project-item  active" data-filter-item data-category="developpement web">
               <a href="#">
 
                 <figure class="project-img">
@@ -843,123 +943,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="{{asset('assets/images/project-3.jpg')}}" alt="fundo" loading="lazy">
+                  <img src="{{asset('assets/images/Schedule.png')}}" alt="Schedule." loading="lazy">
                 </figure>
 
-                <h3 class="project-title">Fundo</h3>
+                <h3 class="project-title">Schedule</h3>
 
-                <p class="project-category">Web design</p>
+                <p class="project-category">API</p>
 
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="applications">
-              <a href="#">
 
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
 
-                  <img src="{{asset('assets/images/project-4.png')}}" alt="brawlhalla" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Brawlhalla</h3>
-
-                <p class="project-category">Applications</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="{{asset('assets/images/project-5.png')}}" alt="dsm." loading="lazy">
-                </figure>
-
-                <h3 class="project-title">DSM.</h3>
-
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="{{asset('assets/images/project-6.png')}}" alt="metaspark" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">MetaSpark</h3>
-
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="{{asset('assets/images/project-7.png')}}" alt="summary" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Summary</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="applications">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="{{asset('assets/images/project-8.jpg')}}" alt="task manager" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Task Manager</h3>
-
-                <p class="project-category">Applications</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="{{asset('assets/images/project-9.png')}}" alt="arrival" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Arrival</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li>
 
           </ul>
 
@@ -982,10 +977,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </header>
 
         <section class="blog-posts">
-
           <ul class="blog-posts-list">
 
-            <li class="blog-post-item">
+            {{-- <li class="blog-post-item">
               <a href="#">
 
                 <figure class="blog-banner-box">
@@ -1151,7 +1145,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
 
               </a>
-            </li>
+            </li> --}}
 
           </ul>
 
@@ -1175,9 +1169,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <section class="mapbox" data-mapbox>
           <figure>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d199666.5651251294!2d-121.58334177520186!3d38.56165006739519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ac672b28397f9%3A0x921f6aaa74197fdb!2sSacramento%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
-              width="400" height="300" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15923.024233880169!2d11.4999684!3d3.8624388!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bcf1cb1ad8e11%3A0xc55007018088e100!2sMbassi%20Ewolo%20Loic%20Aron!5e0!3m2!1sfr!2scm!4v1707915773790!5m2!1sfr!2scm" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </figure>
         </section>
 
@@ -1185,19 +1177,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           <h3 class="h3 form-title">Contact Form</h3>
 
-          <form action="#" class="form" data-form>
-
+          <form action="{{route('contact')}}" method="POST" class="form" data-form>
+            @csrf
             <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+              <input type="text" name="fullname" class="form-input" placeholder="Nom Et Prenom" required data-form-input>
 
-              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+              <input type="email" name="email" class="form-input" placeholder="Addresse Email" required data-form-input>
             </div>
 
-            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+            <textarea name="message" class="form-input" placeholder="Votre Message" required data-form-input></textarea>
 
             <button class="form-btn" type="submit" disabled data-form-btn>
               <ion-icon name="paper-plane"></ion-icon>
-              <span>Send Message</span>
+              <span>Envoyer</span>
             </button>
 
           </form>
