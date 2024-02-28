@@ -157,3 +157,14 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+document.getElementById('copy-button').addEventListener('click', function() {
+    var codeElement = document.getElementById('bash-code');
+    var range = document.createRange();
+    range.selectNode(codeElement);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
+    alert('Code copié dans le presse-papiers !');
+});

@@ -64,6 +64,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         </figure>
 
+        <div class="info-content">
           <h1 class="name" title="Mbassi Loic Aron">Mbassi Loic Aron</h1>
 
           <p class="title">Developpeur Web Full Stack</p>
@@ -256,7 +257,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <section class="service">
 
-          <h3 class="h3 service-title">Ceque je fait</h3>
+          <h3 class="h3 service-title">Ce que je fais</h3>
 
           <ul class="service-list">
 
@@ -978,28 +979,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <section class="blog-posts">
           <ul class="blog-posts-list">
-
-            {{-- <li class="blog-post-item">
-              <a href="#">
+            <li class="blog-post-item">
+              <a href="{{route('blog-decouverte-laravel-10')}}">
 
                 <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-1.jpg" alt="Design conferences in 2022" loading="lazy">
+                  <img src="{{asset('assets/images/téléchargement.png')}}" alt="Decouverte de Laravel 10" loading="lazy">
                 </figure>
 
                 <div class="blog-content">
 
                   <div class="blog-meta">
-                    <p class="blog-category">Design</p>
+                    <p class="blog-category">Mbassi Loic</p>
 
                     <span class="dot"></span>
 
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                    <time datetime="2022-02-23">Fevrier 28, 2024</time>
                   </div>
 
-                  <h3 class="h3 blog-item-title">Design conferences in 2022</h3>
+                  <h3 class="h3 blog-item-title">Decouverte de Laravel 10</h3>
 
                   <p class="blog-text">
-                    Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.
+                    Laravel est un framework PHP open-source populaire qui facilite le développement d'applications web robustes et élégantes...<code class ="blog-detail-gold">voir plus</code>
                   </p>
 
                 </div>
@@ -1008,27 +1008,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </li>
 
             <li class="blog-post-item">
-              <a href="#">
+              <a href="{{route('blog-laravel-10-api')}}">
 
                 <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-2.jpg" alt="Best fonts every designer" loading="lazy">
+                  <img src="{{asset('assets/images/api.jpeg')}}" alt="Decouverte de Laravel 10" loading="lazy">
                 </figure>
 
                 <div class="blog-content">
 
                   <div class="blog-meta">
-                    <p class="blog-category">Design</p>
+                    <p class="blog-category">Mbassi Loic</p>
 
                     <span class="dot"></span>
 
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                    <time datetime="2022-02-23">Fevrier 28, 2024</time>
                   </div>
 
-                  <h3 class="h3 blog-item-title">Best fonts every designer</h3>
+                  <h3 class="h3 blog-item-title">API avec Laravel 10 : application au projet e-shop</h3>
 
                   <p class="blog-text">
-                    Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi.
+                    Les APIs (Application Programming Interfaces) sont des interfaces qui permettent à deux applications de communiquer entre elles. ...<code class ="blog-detail-gold">voir plus</code>
                   </p>
+      ?
 
                 </div>
 
@@ -1036,117 +1037,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </li>
 
             <li class="blog-post-item">
-              <a href="#">
+              <a href="{{route('blog-laravel-10-api-react')}}">
 
                 <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-3.jpg" alt="Design digest #80" loading="lazy">
+                  <img src="{{asset('assets/images/react.png')}}" alt="Decouverte de Laravel 10" loading="lazy">
                 </figure>
 
                 <div class="blog-content">
 
                   <div class="blog-meta">
-                    <p class="blog-category">Design</p>
+                    <p class="blog-category">Mbassi Loic</p>
 
                     <span class="dot"></span>
 
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                    <time datetime="2022-02-23">Fevrier 28, 2024</time>
                   </div>
 
-                  <h3 class="h3 blog-item-title">Design digest #80</h3>
+                  <h3 class="h3 blog-item-title">Connection d'une app Reactjs à notre api laravel (cadre du projet e-shop)</h3>
 
                   <p class="blog-text">
-                    Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem ullam corporis suscipit.
+                    ReactJS est une bibliothèque JavaScript open-source pour créer des interfaces utilisateur interactives. Elle est devenue l'une ....<code class ="blog-detail-gold">voir plus</code>
+                    {{-- <p>ReactJS est une bibliothèque JavaScript open-source pour créer des interfaces utilisateur interactives. Elle est devenue l'une des technologies front-end les plus populaires, utilisée par des entreprises comme Facebook, Netflix et Airbnb.</p> --}}
                   </p>
 
                 </div>
 
               </a>
             </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-4.jpg" alt="UI interactions of the week" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">UI interactions of the week</h3>
-
-                  <p class="blog-text">
-                    Enim ad minim veniam, consectetur adipiscing elit, quis nostrud exercitation ullamco laboris nisi.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-5.jpg" alt="The forgotten art of spacing" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">The forgotten art of spacing</h3>
-
-                  <p class="blog-text">
-                    Maxime placeat, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-6.jpg" alt="Design digest #79" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Design digest #79</h3>
-
-                  <p class="blog-text">
-                    Optio cumque nihil impedit uo minus quod maxime placeat, velit esse cillum.
-                  </p>
-
-                </div>
-
-              </a>
-            </li> --}}
-
           </ul>
 
         </section>
@@ -1177,15 +1094,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           <h3 class="h3 form-title">Contact Form</h3>
 
-          <form action="{{route('contact')}}" method="POST" class="form" data-form>
-            @csrf
-            <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Nom Et Prenom" required data-form-input>
+            <form action="{{route('contact')}}" method="POST" class="form" data-form>
+              @csrf
+              <div class="input-wrapper">
+                <input type="text" name="fullname" class="form-input" placeholder="Nom Et Prenom" required data-form-input>
 
-              <input type="email" name="email" class="form-input" placeholder="Addresse Email" required data-form-input>
-            </div>
+                <input type="email" name="email" class="form-input" placeholder="Addresse Email" required data-form-input>
+              </div>
 
-            <textarea name="message" class="form-input" placeholder="Votre Message" required data-form-input></textarea>
+              <textarea name="message" class="form-input" placeholder="Votre Message" required data-form-input></textarea>
 
             <button class="form-btn" type="submit" disabled data-form-btn>
               <ion-icon name="paper-plane"></ion-icon>
