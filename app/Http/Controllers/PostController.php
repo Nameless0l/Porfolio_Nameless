@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -12,14 +15,56 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $posts = Post::with('category')->latest()->paginate(10);
+        return view('admin.posts.index', compact('posts'));
     }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        $categories = Category::all();
+        return view('admin.posts.create', compact('categories'));
+    }
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'body' => 'required|string',
+            'excerpt' => 'nullable|string',
+            'category_id' => 'required|exists:categories,id',
+            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'status' => 'required|in:draft,published',
+            'published_at' => 'nullable|date',
+        ]);
+
+        $post = new Post();
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->excerpt = $request->excerpt;
+        $post->category_id = $request->category_id;
+        $post->status = $request->status;
+
+        // Handle published_at date
+        if ($request->status == 'published') {
+            $post->published_at = $request->published_at ?? now();
+        }
+
+        // Handle featured image upload
+        if ($request->hasFile('featured_image')) {
+            $imagePath = $request->file('featured_image')->store('posts', 'public');
+            $post->featured_image = $imagePath;
+        }
+
+        $post->save();
+
+        return redirect()->route('admin.posts.index')
+            ->with('success', 'Post created successfully.');
     }
 
     /**
@@ -27,7 +72,16 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('admin.posts.show', compact('post'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Post $post)
+    {
+        $categories = Category::all();
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -35,7 +89,42 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'body' => 'required|string',
+            'excerpt' => 'nullable|string',
+            'category_id' => 'required|exists:categories,id',
+            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'status' => 'required|in:draft,published',
+            'published_at' => 'nullable|date',
+        ]);
+
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->excerpt = $request->excerpt;
+        $post->category_id = $request->category_id;
+        $post->status = $request->status;
+
+        // Handle published_at date
+        if ($request->status == 'published' && !$post->published_at) {
+            $post->published_at = $request->published_at ?? now();
+        }
+
+        // Handle featured image upload
+        if ($request->hasFile('featured_image')) {
+            // Delete old image if exists
+            if ($post->featured_image) {
+                Storage::disk('public')->delete($post->featured_image);
+            }
+
+            $imagePath = $request->file('featured_image')->store('posts', 'public');
+            $post->featured_image = $imagePath;
+        }
+
+        $post->save();
+
+        return redirect()->route('admin.posts.index')
+            ->with('success', 'Post updated successfully.');
     }
 
     /**
@@ -43,6 +132,46 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        // Delete featured image if exists
+        if ($post->featured_image) {
+            Storage::disk('public')->delete($post->featured_image);
+        }
+
+        $post->delete();
+
+        return redirect()->route('admin.posts.index')
+            ->with('success', 'Post deleted successfully.');
+    }
+
+    /**
+     * Display the public blog index.
+     */
+    public function blogIndex()
+    {
+        $posts = Post::published()->paginate(9);
+        $categories = Category::withCount(['posts' => function ($query) {
+            $query->where('status', 'published');
+        }])->having('posts_count', '>', 0)->get();
+
+        return view('blog.index', compact('posts', 'categories'));
+    }
+
+    /**
+     * Display a single blog post.
+     */
+    public function blogShow($slug)
+    {
+        $post = Post::where('slug', $slug)
+                    ->where('status', 'published')
+                    ->where('published_at', '<=', now())
+                    ->firstOrFail();
+
+        $relatedPosts = Post::where('category_id', $post->category_id)
+                            ->where('id', '!=', $post->id)
+                            ->published()
+                            ->limit(3)
+                            ->get();
+
+        return view('blog.show', compact('post', 'relatedPosts'));
     }
 }

@@ -1,66 +1,100 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Je vais vous proposer des sujets de TP orientés contexte africain avec PyTorch, en me concentrant spécifiquement sur les réseaux de neurones MLP (Multi-Layer Perceptron). Pour chaque sujet, je préciserai le dataset et les algorithmes PyTorch appropriés.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 1. Prédiction des rendements agricoles en Afrique
 
-## About Laravel
+**Dataset**: [African Soil Property Prediction](https://www.kaggle.com/c/afsis-soil-properties) ou données climatiques du [African Rainfall Project](https://www.kaggle.com/datasets/espenfolke/african-rainfall-data)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**Algorithmes PyTorch**:
+- MLP avec plusieurs couches denses (`nn.Linear`)
+- Optimiseur Adam (`torch.optim.Adam`)
+- Fonction de perte MSE (`nn.MSELoss`)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**Contexte**: Les étudiants développeront un modèle MLP pour prédire les rendements agricoles en fonction des propriétés du sol, de la pluviométrie et d'autres facteurs climatiques. Ce sujet est directement lié à la sécurité alimentaire en Afrique.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 2. Classification des langues africaines à partir de textes
 
-## Learning Laravel
+**Dataset**: [African News Dataset](https://github.com/masakhane-io/masakhane-news) ou [African Languages Dataset](https://huggingface.co/datasets/african_language_corpus)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**Algorithmes PyTorch**:
+- MLP avec couches d'embedding (`nn.Embedding`)
+- Couches denses (`nn.Linear`)
+- Dropout pour régularisation (`nn.Dropout`)
+- Fonction de perte CrossEntropy (`nn.CrossEntropyLoss`)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+**Contexte**: Les étudiants créeront un classificateur MLP qui identifie la langue africaine d'un texte donné, contribuant à la préservation et à la valorisation des langues africaines.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 3. Prédiction de la propagation des maladies en Afrique
 
-## Laravel Sponsors
+**Dataset**: [Malaria Dataset](https://www.kaggle.com/datasets/iarunava/cell-images-for-detecting-malaria) ou données COVID-19 africaines
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+**Algorithmes PyTorch**:
+- MLP avec batch normalization (`nn.BatchNorm1d`)
+- Activation ReLU et Sigmoid (`nn.ReLU`, `nn.Sigmoid`)
+- Optimiseur SGD avec momentum (`torch.optim.SGD`)
 
-### Premium Partners
+**Contexte**: Les étudiants développeront un modèle prédictif pour la propagation de maladies comme le paludisme ou la COVID-19 en Afrique, en se basant sur divers facteurs environnementaux et démographiques.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## 4. Classification d'art africain traditionnel
 
-## Contributing
+**Dataset**: [African Art Dataset](https://www.kaggle.com/datasets/estelleaflalo/african-mask-classification) ou créer un dataset à partir d'images d'art africain
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+**Algorithmes PyTorch**:
+- MLP avec plusieurs couches cachées (`nn.Sequential`)
+- Techniques de régularisation L1/L2 (`weight_decay` dans l'optimiseur)
+- Learning rate scheduler (`torch.optim.lr_scheduler`)
 
-## Code of Conduct
+**Contexte**: Les étudiants construiront un classificateur pour identifier différents styles d'art africain traditionnel (masques, sculptures, tissus), mettant en valeur le riche patrimoine culturel du continent.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 5. Prédiction des prix des marchés africains
 
-## Security Vulnerabilities
+**Dataset**: [African Markets Dataset](https://www.kaggle.com/datasets/mathurinache/african-food-prices) ou données de bourses africaines
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+**Algorithmes PyTorch**:
+- MLP pour séries temporelles
+- Normalisation des données (`nn.BatchNorm1d`)
+- Optimiseur Adam avec réglage de l'apprentissage (`torch.optim.Adam`)
+- EarlyStopping personnalisé avec PyTorch
 
-## License
+**Contexte**: Les étudiants développeront un modèle MLP pour prédire les prix des produits agricoles ou des actions sur les marchés africains, un sujet pertinent pour l'économie locale.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Recommandation: Classification des cultures africaines par analyse d'images
+
+**Dataset**: [African Crops Dataset](https://www.kaggle.com/datasets/teddyummy/african-crops-image-dataset) ou [PlantVillage Dataset](https://www.kaggle.com/datasets/emmarex/plantdisease)
+
+**Algorithmes PyTorch**:
+```python
+import torch
+import torch.nn as nn
+import torch.optim as optim
+from torch.utils.data import DataLoader, Dataset
+from torchvision import transforms
+
+class AfricanCropsMLP(nn.Module):
+    def __init__(self, input_size, hidden_size, num_classes):
+        super(AfricanCropsMLP, self).__init__()
+        self.flatten = nn.Flatten()
+        self.mlp = nn.Sequential(
+            nn.Linear(input_size, hidden_size),
+            nn.ReLU(),
+            nn.Dropout(0.2),
+            nn.Linear(hidden_size, hidden_size//2),
+            nn.ReLU(),
+            nn.Dropout(0.2),
+            nn.Linear(hidden_size//2, num_classes)
+        )
+        
+    def forward(self, x):
+        x = self.flatten(x)
+        x = self.mlp(x)
+        return x
+```
+
+**Contexte**: Ce TP permettra aux étudiants de développer un classificateur de cultures africaines à partir d'images. Les agriculteurs pourraient utiliser cette technologie via une application mobile pour identifier les cultures et détecter des maladies potentielles. C'est un projet concret avec un impact direct sur l'agriculture africaine.
+
+Ce sujet combine:
+- La simplicité d'un MLP (adapté aux débutants)
+- Un contexte africain pertinent
+- Des applications pratiques
+- La possibilité d'étendre le projet (détection de maladies, recommandations de traitements)
+
+Souhaitez-vous que je développe davantage l'un de ces sujets avec un plan de TP détaillé et le code complet?
