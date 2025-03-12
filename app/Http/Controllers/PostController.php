@@ -149,11 +149,18 @@ class PostController extends Controller
     public function blogIndex()
     {
         $posts = Post::published()->paginate(9);
+
+        // Solution universelle
         $categories = Category::withCount(['posts' => function ($query) {
             $query->where('status', 'published');
-        }])->having('posts_count', '>', 0)->get();
+        }])->get();
 
-        return view('blog.index', compact('posts', 'categories'));
+        // Filtrer en PHP plutôt qu'avec HAVING
+        $categoriesWithPosts = $categories->filter(function ($category) {
+            return $category->posts_count > 0;
+        });
+
+        return view('blog.index', compact('posts', 'categoriesWithPosts'));
     }
 
     /**

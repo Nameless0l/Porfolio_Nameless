@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('featured_image')->nullable();
             $table->enum('status', ['draft', 'published'])->default('draft');
             $table->timestamp('published_at')->nullable();
-            $table->integer('read_time')->nullable(); 
+            $table->integer('read_time')->nullable();
         });
     }
 
