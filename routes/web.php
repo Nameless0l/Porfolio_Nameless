@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/temp', function () {
     return view('welcome');
 })->name('home');
 // Route d'accueil
-Route::get('/bien', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::post('/contact', [Contact::class, 'index'])->name('contact');
 Route::get('post/decouverte-laravel-10', function(){
