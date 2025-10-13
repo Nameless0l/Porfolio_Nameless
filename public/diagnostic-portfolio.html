@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnostic Portfolio - Filtrage Projets</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #4F46E5;
+            padding-bottom: 10px;
+        }
+        .success {
+            color: #10B981;
+            font-weight: bold;
+        }
+        .error {
+            color: #EF4444;
+            font-weight: bold;
+        }
+        .warning {
+            color: #F59E0B;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        th {
+            background-color: #f9fafb;
+            font-weight: 600;
+        }
+        code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .btn {
+            background: #4F46E5;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .btn:hover {
+            background: #4338CA;
+        }
+        pre {
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Diagnostic Portfolio - Système de Filtrage</h1>
+    
+    <div class="section">
+        <h2>1. Test JavaScript</h2>
+        <p>Cliquez sur les boutons pour tester le filtrage :</p>
+        
+        <button class="btn" data-filter-btn data-filter-value="all">Tous</button>
+        <button class="btn" data-filter-btn data-filter-value="personal">Personnel</button>
+        <button class="btn" data-filter-btn data-filter-value="professional">Professionnel</button>
+        
+        <div style="margin-top: 20px;">
+            <h3>Projets de test :</h3>
+            <div data-filter-item data-category="personal" style="padding: 10px; background: #e0f2fe; margin: 5px; border-radius: 4px;">
+                📱 Projet Personnel 1 <code>data-category="personal"</code>
+            </div>
+            <div data-filter-item data-category="personal" style="padding: 10px; background: #e0f2fe; margin: 5px; border-radius: 4px;">
+                📱 Projet Personnel 2 <code>data-category="personal"</code>
+            </div>
+            <div data-filter-item data-category="professional" style="padding: 10px; background: #dbeafe; margin: 5px; border-radius: 4px;">
+                💼 Projet Professionnel 1 <code>data-category="professional"</code>
+            </div>
+            <div data-filter-item data-category="professional" style="padding: 10px; background: #dbeafe; margin: 5px; border-radius: 4px;">
+                💼 Projet Professionnel 2 <code>data-category="professional"</code>
+            </div>
+        </div>
+        
+        <div id="test-result" style="margin-top: 20px; padding: 15px; background: #f3f4f6; border-radius: 6px;">
+            Statut : En attente du test...
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>2. Vérification des Attributs</h2>
+        <div id="attributes-check"></div>
+    </div>
+
+    <div class="section">
+        <h2>3. Console JavaScript</h2>
+        <pre id="console-output">Ouvrez la console de votre navigateur (F12) pour voir les logs détaillés.</pre>
+    </div>
+
+    <div class="section">
+        <h2>4. Instructions de Correction</h2>
+        <p>Si le test échoue, voici les étapes à suivre :</p>
+        <ol>
+            <li><strong>Vider le cache du navigateur :</strong> Ctrl+Shift+Del ou Cmd+Shift+Del</li>
+            <li><strong>Vérifier que script.js est bien chargé :</strong> Ouvrez F12 → Onglet Network → Recherchez "script.js"</li>
+            <li><strong>Hard Refresh :</strong> Ctrl+F5 (Windows) ou Cmd+Shift+R (Mac)</li>
+            <li><strong>Vider les caches Laravel :</strong>
+                <pre>php artisan cache:clear
+php artisan view:clear
+php artisan config:clear</pre>
+            </li>
+        </ol>
+    </div>
+
+    <script>
+        console.log('=== DIAGNOSTIC PORTFOLIO - DEBUT ===');
+        
+        // Fonction pour logger dans la page
+        function logToPage(message, type = 'info') {
+            const output = document.getElementById('console-output');
+            const timestamp = new Date().toLocaleTimeString();
+            const color = type === 'error' ? '#EF4444' : type === 'success' ? '#10B981' : '#4F46E5';
+            output.innerHTML += `\n[${timestamp}] <span style="color: ${color}">${message}</span>`;
+            console.log(`[${timestamp}] ${message}`);
+        }
+
+        // 1. Vérifier que les éléments existent
+        logToPage('1. Vérification des éléments DOM...');
+        
+        const filterButtons = document.querySelectorAll("[data-filter-btn]");
+        const filterableItems = document.querySelectorAll("[data-filter-item]");
+        
+        logToPage(`   ✓ Boutons trouvés: ${filterButtons.length}`, 'success');
+        logToPage(`   ✓ Projets trouvés: ${filterableItems.length}`, 'success');
+
+        // 2. Vérifier les attributs data-filter-value
+        logToPage('2. Vérification des attributs data-filter-value...');
+        
+        const attributesDiv = document.getElementById('attributes-check');
+        let attributesHTML = '<table><thead><tr><th>Élément</th><th>data-filter-value</th><th>Texte</th><th>Statut</th></tr></thead><tbody>';
+        
+        let allAttributesOK = true;
+        filterButtons.forEach((btn, index) => {
+            const filterValue = btn.getAttribute('data-filter-value');
+            const text = btn.textContent.trim();
+            const hasAttribute = filterValue !== null;
+            
+            if (!hasAttribute && text.toLowerCase() !== 'tous') {
+                allAttributesOK = false;
+            }
+            
+            attributesHTML += `<tr>
+                <td>Bouton ${index + 1}</td>
+                <td><code>${filterValue || '(vide)'}</code></td>
+                <td>${text}</td>
+                <td class="${hasAttribute || text.toLowerCase() === 'tous' ? 'success' : 'error'}">
+                    ${hasAttribute || text.toLowerCase() === 'tous' ? '✓ OK' : '✗ MANQUANT'}
+                </td>
+            </tr>`;
+            
+            logToPage(`   Bouton "${text}": data-filter-value="${filterValue}"`);
+        });
+        
+        attributesHTML += '</tbody></table>';
+        attributesDiv.innerHTML = attributesHTML;
+
+        // 3. Vérifier les attributs data-category des projets
+        logToPage('3. Vérification des attributs data-category...');
+        
+        filterableItems.forEach((item, index) => {
+            const category = item.dataset.category;
+            logToPage(`   Projet ${index + 1}: data-category="${category}"`);
+        });
+
+        // 4. Fonction de filtrage (copie de script.js)
+        function filterProjects(filterValue) {
+            logToPage(`4. Filtrage avec valeur: "${filterValue}"`, 'info');
+            
+            let visibleCount = 0;
+            
+            // Mettre à jour les boutons actifs
+            filterButtons.forEach(function (btn) {
+                const buttonValue = btn.getAttribute('data-filter-value') || btn.textContent.toLowerCase().trim();
+                if (buttonValue === filterValue) {
+                    btn.classList.add("active");
+                    btn.style.background = '#4338CA';
+                } else {
+                    btn.classList.remove("active");
+                    btn.style.background = '#4F46E5';
+                }
+            });
+
+            // Filtrer les projets
+            filterableItems.forEach(function (item) {
+                const itemCategory = item.dataset.category;
+                const shouldShow = filterValue === 'all' || itemCategory === filterValue;
+                
+                if (shouldShow) {
+                    item.classList.add("active");
+                    item.style.display = 'block';
+                    item.style.opacity = '1';
+                    visibleCount++;
+                } else {
+                    item.classList.remove("active");
+                    item.style.display = 'none';
+                    item.style.opacity = '0.3';
+                }
+                
+                logToPage(`   - Projet ${itemCategory}: ${shouldShow ? 'VISIBLE' : 'MASQUÉ'}`);
+            });
+            
+            const resultDiv = document.getElementById('test-result');
+            if (visibleCount > 0) {
+                resultDiv.innerHTML = `<span class="success">✓ SUCCÈS :</span> ${visibleCount} projet(s) affiché(s) pour le filtre "${filterValue}"`;
+                logToPage(`✓ Test réussi: ${visibleCount} projets visibles`, 'success');
+            } else if (filterValue === 'all') {
+                resultDiv.innerHTML = `<span class="error">✗ ERREUR :</span> Aucun projet affiché alors que "Tous" devrait tout montrer!`;
+                logToPage(`✗ Test échoué: Aucun projet visible avec "Tous"`, 'error');
+            } else {
+                resultDiv.innerHTML = `<span class="warning">⚠ ATTENTION :</span> Aucun projet de type "${filterValue}" trouvé`;
+                logToPage(`⚠ Aucun projet de type "${filterValue}"`, 'warning');
+            }
+        }
+
+        // 5. Ajouter les événements aux boutons de test
+        logToPage('5. Ajout des événements de clic...');
+        
+        filterButtons.forEach(function(btn) {
+            btn.addEventListener("click", function () {
+                const filterValue = this.getAttribute('data-filter-value') || this.textContent.toLowerCase().trim();
+                logToPage(`\n=== CLIC SUR "${this.textContent.trim()}" ===`, 'info');
+                filterProjects(filterValue);
+            });
+        });
+        
+        logToPage('✓ Événements ajoutés avec succès', 'success');
+        logToPage('\n=== DIAGNOSTIC PRÊT - Cliquez sur les boutons pour tester ===', 'success');
+        
+        // Test automatique au chargement
+        setTimeout(() => {
+            logToPage('\n=== TEST AUTOMATIQUE ===', 'info');
+            filterProjects('all');
+        }, 500);
+    </script>
+</body>
+</html>

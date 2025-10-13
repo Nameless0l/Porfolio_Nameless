@@ -26,7 +26,7 @@ class ProjectController extends Controller
     {
         // Suggérer le prochain numéro d'ordre (max actuel + 1)
         $nextOrder = Project::max('order') + 1;
-        
+
         return view('admin.projects.create', compact('nextOrder'));
     }
 
