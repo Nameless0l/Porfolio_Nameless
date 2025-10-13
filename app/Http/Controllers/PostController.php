@@ -40,6 +40,8 @@ class PostController extends Controller
             'category_id' => 'required|exists:categories,id',
             'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'status' => 'required|in:draft,published',
+            'is_pinned' => 'nullable|boolean',
+            'order' => 'nullable|integer|min:0',
             'published_at' => 'nullable|date',
         ]);
 
@@ -49,6 +51,8 @@ class PostController extends Controller
         $post->excerpt = $request->excerpt;
         $post->category_id = $request->category_id;
         $post->status = $request->status;
+        $post->is_pinned = $request->has('is_pinned') ? (bool)$request->is_pinned : false;
+        $post->order = $request->input('order', 0);
 
         // Handle published_at date
         if ($request->status == 'published') {
@@ -96,6 +100,8 @@ class PostController extends Controller
             'category_id' => 'required|exists:categories,id',
             'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'status' => 'required|in:draft,published',
+            'is_pinned' => 'nullable|boolean',
+            'order' => 'nullable|integer|min:0',
             'published_at' => 'nullable|date',
         ]);
 
@@ -104,6 +110,8 @@ class PostController extends Controller
         $post->excerpt = $request->excerpt;
         $post->category_id = $request->category_id;
         $post->status = $request->status;
+        $post->is_pinned = $request->has('is_pinned') ? (bool)$request->is_pinned : false;
+        $post->order = $request->input('order', 0);
 
         // Handle published_at date
         if ($request->status == 'published' && !$post->published_at) {
@@ -153,7 +161,7 @@ class PostController extends Controller
         // Solution universelle
         $categories = Category::withCount(['posts' => function ($query) {
             $query->where('status', 'published');
-        }])->get();
+        }])->ordered()->get();
 
         // Filtrer en PHP plutôt qu'avec HAVING
         $categoriesWithPosts = $categories->filter(function ($category) {

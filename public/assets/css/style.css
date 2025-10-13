@@ -1114,6 +1114,23 @@ main {
   line-height: 1.6;
 }
 
+/* Style des liens dans les articles de blog */
+.blog-text a {
+  color: var(--orange-yellow-crayola);
+  text-decoration: underline;
+  transition: var(--transition-1);
+}
+
+.blog-text a:hover {
+  color: var(--vegas-gold);
+  text-decoration: none;
+}
+
+.blog-text strong {
+  color: var(--white-2);
+  font-weight: var(--fw-500);
+}
+
 
 
 

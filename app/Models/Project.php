@@ -20,6 +20,7 @@ class Project extends Model
         'github_link',
         'type',
         'is_featured',
+        'order',
         'technologies'
     ];
 
@@ -64,4 +65,31 @@ class Project extends Model
     {
         return $query->where('is_featured', true);
     }
+
+    // Scope for ordered projects
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('is_featured', 'desc')
+                     ->orderBy('order', 'asc')
+                     ->orderBy('created_at', 'desc');
+    }
+
+    // Get formatted type name
+    public function getFormattedTypeAttribute()
+    {
+        $types = [
+            'personal' => 'Personnel',
+            'professional' => 'Professionnel',
+            'academic' => 'Académique',
+            'web' => 'Développement Web',
+            'mobile' => 'Développement Mobile',
+            'ai' => 'Intelligence Artificielle',
+            'data' => 'Science des Données',
+            'design' => 'Design',
+            'other' => 'Autre'
+        ];
+
+        return $types[$this->type] ?? ucfirst($this->type);
+    }
 }
+

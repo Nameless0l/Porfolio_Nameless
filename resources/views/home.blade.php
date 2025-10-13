@@ -27,7 +27,7 @@
   <meta property="og:image" content="{{ asset('assets/images/portfolio-share.jpg') }}">
   <meta property="og:url" content="{{ url()->current() }}">
   <meta property="og:type" content="website">
-  
+
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ $generalSettings['site_name'] ?? 'Mbassi Loic Aron - Portfolio' }}">
@@ -333,7 +333,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           - testimonials
         -->
 
-        <section class="testimonials">
+        {{-- <section class="testimonials">
 
           <h3 class="h3 testimonials-title">Temoignages</h3>
 
@@ -378,7 +378,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           </ul>
 
-        </section>
+        </section> --}}
 
 
         <!--
@@ -430,7 +430,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           - clients
         -->
 
-        <section class="clients">
+        {{-- <section class="clients">
 
           <h3 class="h3 clients-title">Clients</h3>
 
@@ -474,7 +474,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           </ul>
 
-        </section>
+        </section> --}}
 
       </article>
 
@@ -742,21 +742,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <ul class="filter-list">
 
             <li class="filter-item">
-              <button class="active" data-filter-btn>All</button>
+              <button class="active" data-filter-btn data-filter-value="all">Tous</button>
             </li>
-            <li class="filter-item">
-                <button data-filter-btn>developpement web</button>
+
+            @foreach($projectTypes as $type)
+              <li class="filter-item">
+                <button data-filter-btn data-filter-value="{{ $type['slug'] }}">{{ $type['name'] }}</button>
               </li>
-            <li class="filter-item">
-              <button data-filter-btn>intelligence artificielle</button>
-            </li>
+            @endforeach
+
           </ul>
 
           <div class="filter-select-box">
 
             <button class="filter-select" data-select>
 
-              <div class="select-value" data-selecct-value>Choisir la categorie</div>
+              <div class="select-value" data-selecct-value>Choisir la catégorie</div>
 
               <div class="select-icon">
                 <ion-icon name="chevron-down"></ion-icon>
@@ -767,21 +768,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <ul class="select-list">
 
               <li class="select-item">
-                <button data-select-item>All</button>
+                <button data-select-item data-filter-value="all">Tous</button>
               </li>
-              <li class="select-item">
-                <button data-select-item>developpement web</button>
-              </li>
-              <li class="select-item">
-                <button data-select-item>intelligence ar</button>
-              </li>
+
+              @foreach($projectTypes as $type)
+                <li class="select-item">
+                  <button data-select-item data-filter-value="{{ $type['slug'] }}">{{ $type['name'] }}</button>
+                </li>
+              @endforeach
+
             </ul>
 
           </div>
 
           <ul class="project-list">
-            @if(isset($featuredProjects) && count($featuredProjects) > 0)
-              @foreach($featuredProjects as $project)
+            @if(isset($projects) && count($projects) > 0)
+              @foreach($projects as $project)
                 <li class="project-item active" data-filter-item data-category="{{ $project->type }}">
                   <a href="{{ $project->link ?? '#' }}" target="_blank">
                     <figure class="project-img">
@@ -795,87 +797,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                       @endif
                     </figure>
                     <h3 class="project-title">{{ $project->title }}</h3>
-                    <p class="project-category">{{ ucfirst($project->type) }}</p>
+                    <p class="project-category">{{ $project->formatted_type }}</p>
                   </a>
                 </li>
               @endforeach
             @else
-            <li class="project-item  active" data-filter-item data-category="developpement web">
-              <a href="https://www.bazelsquare.com/contact" target="_blank">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="{{asset('assets/images/Bazelsquare.png')}}" alt="Bazelsquare" loading="lazy">
-                </figure>
-                <h3 class="project-title">Bazelsquare</h3>
-                <p class="project-category">developpement web</p>
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="developpement web">
-                <a href="https://www.kingdigital.bazelsquare.com/contactez-nous" target="_blank">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                    <img src="{{asset('assets/images/King_digital.png')}}" alt="king digital" loading="lazy">
-                  </figure>
-                  <h3 class="project-title">King Digital</h3>
-                  <p class="project-category">Developpement Web</p>
-                </a>
-              </li>
-
-              <li class="project-item  active" data-filter-item data-category="intelligence artificielle">
-                  <a href="" target="_blank">
-                    <figure class="project-img">
-                      <div class="project-item-icon-box">
-                        <ion-icon name="eye-outline"></ion-icon>
-                      </div>
-                      <img src="{{asset('assets/images/ArticialI.png')}}" alt="king digital" loading="lazy">
-                    </figure>
-                    <h3 class="project-title">Inaya</h3>
-                    <p class="project-category">Intelligence Artificielle</p>
-                  </a>
-                </li>
-
-              <li class="project-item  active" data-filter-item data-category="developpement web">
-                <a href="#">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                    <img src="{{asset('assets/images/SosDocta.png')}}" alt="sos docta" loading="lazy">
-                  </figure>
-                  <h3 class="project-title">SOS DOCTA</h3>
-                  <p class="project-category">Site Web De consultation en ligne</p>
-                </a>
-              </li>
-
-              <li class="project-item  active" data-filter-item data-category="developpement web">
-                <a href="#">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                    <img src="{{asset('assets/images/quebec.png')}}" alt="brawlhalla" loading="lazy">
-                  </figure>
-                  <h3 class="project-title">Nettoi Quebec</h3>
-                  <p class="project-category">Site Web</p>
-                </a>
-              </li>
-
-              <li class="project-item  active" data-filter-item data-category="developpement web">
-                <a href="#">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                    <img src="{{asset('assets/images/Schedule.png')}}" alt="Schedule." loading="lazy">
-                  </figure>
-                  <h3 class="project-title">Schedule</h3>
-                  <p class="project-category">API</p>
-                </a>
+              <li class="project-item active">
+                <div style="text-align: center; padding: 2rem; width: 100%;">
+                  <p style="color: var(--light-gray);">Aucun projet disponible pour le moment.</p>
+                </div>
               </li>
               @endif
             </ul>
@@ -919,62 +849,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   </li>
                 @endforeach
               @else
-              <li class="blog-post-item">
-                <a href="{{route('blog-decouverte-laravel-10')}}">
-                  <figure class="blog-banner-box">
-                    <img src="{{asset('assets/images/téléchargement.png')}}" alt="Decouverte de Laravel 10" loading="lazy">
-                  </figure>
-                  <div class="blog-content">
-                    <div class="blog-meta">
-                      <p class="blog-category">Mbassi Loic</p>
-                      <span class="dot"></span>
-                      <time datetime="2022-02-23">Fevrier 28, 2024</time>
-                    </div>
-                    <h3 class="h3 blog-item-title">Decouverte de Laravel 10</h3>
-                    <p class="blog-text">
-                      Laravel est un framework PHP open-source populaire qui facilite le développement d'applications web robustes et élégantes...<code class ="blog-detail-gold">voir plus</code>
+                <li class="blog-post-item">
+                  <div class="blog-content" style="text-align: center; padding: 2rem;">
+                    <p class="blog-text">Aucun article publié pour le moment.</p>
+                    <p class="blog-text" style="margin-top: 1rem;">
+                      <a href="{{ route('blog.index') }}" style="color: var(--orange-yellow-crayola);">Découvrez tous nos articles</a>
                     </p>
                   </div>
-                </a>
-              </li>
-
-              <li class="blog-post-item">
-                <a href="{{route('blog-laravel-10-api')}}">
-                  <figure class="blog-banner-box">
-                    <img src="{{asset('assets/images/api.jpeg')}}" alt="Decouverte de Laravel 10" loading="lazy">
-                  </figure>
-                  <div class="blog-content">
-                    <div class="blog-meta">
-                      <p class="blog-category">Mbassi Loic</p>
-                      <span class="dot"></span>
-                      <time datetime="2022-02-23">Fevrier 28, 2024</time>
-                    </div>
-                    <h3 class="h3 blog-item-title">API avec Laravel 10 : application au projet e-shop</h3>
-                    <p class="blog-text">
-                      Les APIs (Application Programming Interfaces) sont des interfaces qui permettent à deux applications de communiquer entre elles. ...<code class ="blog-detail-gold">voir plus</code>
-                    </p>
-                  </div>
-                </a>
-              </li>
-
-              <li class="blog-post-item">
-                <a href="{{route('blog-laravel-10-api-react')}}">
-                  <figure class="blog-banner-box">
-                    <img src="{{asset('assets/images/react.png')}}" alt="Decouverte de Laravel 10" loading="lazy">
-                  </figure>
-                  <div class="blog-content">
-                    <div class="blog-meta">
-                      <p class="blog-category">Mbassi Loic</p>
-                      <span class="dot"></span>
-                      <time datetime="2022-02-23">Fevrier 28, 2024</time>
-                    </div>
-                    <h3 class="h3 blog-item-title">Connection d'une app Reactjs à notre api laravel (cadre du projet e-shop)</h3>
-                    <p class="blog-text">
-                      ReactJS est une bibliothèque JavaScript open-source pour créer des interfaces utilisateur interactives. Elle est devenue l'une ....<code class ="blog-detail-gold">voir plus</code>
-                    </p>
-                  </div>
-                </a>
-              </li>
+                </li>
               @endif
             </ul>
           </section>
@@ -991,7 +873,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           <section class="mapbox" data-mapbox>
             <figure>
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15923.024233880169!2d11.4999684!3d3.8624388!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bcf1cb1ad8e11%3A0xc55007018088e100!2sMbassi%20Ewolo%20Loic%20Aron!5e0!3m2!1sfr!2scm!4v1707915773790!5m2!1sfr!2scm" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2615.5591487700117!2d2.0706195763166386!3d49.03799117135711!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6f523f500715b%3A0x60dd9bd11a812475!2sLes%2C%207%20Rue%20des%20Ch%C3%AAnes%20d&#39;Or%2C%2095000%20Cergy!5e0!3m2!1sfr!2sfr!4v1760355969050!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </figure>
           </section>
 

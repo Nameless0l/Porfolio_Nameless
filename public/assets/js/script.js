@@ -64,7 +64,7 @@ function initFilterButtons() {
     // Add event listeners to filter buttons
     for (let i = 0; i < filterButtons.length; i++) {
       filterButtons[i].addEventListener("click", function () {
-        let filterValue = this.textContent.toLowerCase().trim();
+        let filterValue = this.getAttribute('data-filter-value') || this.textContent.toLowerCase().trim();
         filterProjects(filterValue);
 
         // Mettre à jour le hash pour inclure la catégorie
@@ -82,7 +82,7 @@ function initFilterButtons() {
     // Add filter functionality to select items
     for (let i = 0; i < filterSelectItems.length; i++) {
       filterSelectItems[i].addEventListener("click", function () {
-        let filterValue = this.textContent.toLowerCase().trim();
+        let filterValue = this.getAttribute('data-filter-value') || this.textContent.toLowerCase().trim();
         filterProjects(filterValue);
 
         filterSelectBox.querySelector("[data-selecct-value]").textContent = this.textContent;
@@ -102,7 +102,8 @@ function initFilterButtons() {
 // Function to filter projects
 function filterProjects(filterValue) {
   for (let i = 0; i < filterButtons.length; i++) {
-    if (filterButtons[i].textContent.toLowerCase().trim() === filterValue) {
+    let buttonValue = filterButtons[i].getAttribute('data-filter-value') || filterButtons[i].textContent.toLowerCase().trim();
+    if (buttonValue === filterValue) {
       filterButtons[i].classList.add("active");
     } else {
       filterButtons[i].classList.remove("active");
@@ -110,7 +111,7 @@ function filterProjects(filterValue) {
   }
 
   filterableItems.forEach(function (item) {
-    if (filterValue === 'all' || item.dataset.category.includes(filterValue)) {
+    if (filterValue === 'all' || item.dataset.category === filterValue) {
       item.classList.add("active");
     } else {
       item.classList.remove("active");

@@ -16,32 +16,57 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // Récupération des projets en vedette
-        $featuredProjects = Project::where('is_featured', true)
-                                   ->latest()
-                                   ->take(3)
-                                   ->get();
+        // Récupère TOUS les projets (pas seulement featured) avec ordre correct
+        $projects = Project::ordered()->get();
 
-        // Récupération des compétences par catégorie
+        // Récupère les types distincts de projets pour les onglets dynamiques
+        $projectTypes = Project::select('type')
+                               ->distinct()
+                               ->orderBy('type')
+                               ->pluck('type')
+                               ->map(function($type) {
+                                   return [
+                                       'slug' => $type,
+                                       'name' => $this->formatProjectType($type)
+                                   ];
+                               });
+
         $skillsByCategory = Skill::ordered()->get()->groupBy('category');
 
-        // Récupération des expériences par type
         $experiences = [
             'work' => Experience::ofType('work')->ordered()->get(),
             'education' => Experience::ofType('education')->ordered()->get(),
         ];
 
-        // Récupération des articles récents
-        $recentPosts = Post::published()
-                          ->latest('published_at')
-                          ->take(3)
-                          ->get();
+        // Récupère les articles publiés (le scope published() gère déjà l'ordre correct)
+        $recentPosts = Post::published()->get();
 
         return view('home', compact(
-            'featuredProjects',
+            'projects',
+            'projectTypes',
             'skillsByCategory',
             'experiences',
             'recentPosts'
         ));
+    }
+
+    /**
+     * Formate le nom du type de projet pour l'affichage
+     */
+    private function formatProjectType($type)
+    {
+        $types = [
+            'personal' => 'Personnel',
+            'professional' => 'Professionnel',
+            'academic' => 'Académique',
+            'web' => 'Développement Web',
+            'mobile' => 'Développement Mobile',
+            'ai' => 'Intelligence Artificielle',
+            'data' => 'Science des Données',
+            'design' => 'Design',
+            'other' => 'Autre'
+        ];
+
+        return $types[$type] ?? ucfirst($type);
     }
 }

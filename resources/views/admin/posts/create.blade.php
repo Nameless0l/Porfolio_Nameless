@@ -72,6 +72,33 @@
                     @enderror
                 </div>
 
+                <div>
+                    <label class="flex items-center">
+                        <input type="checkbox" name="is_pinned" value="1" {{ old('is_pinned') ? 'checked' : '' }}
+                            class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                        <span class="ml-2 text-sm font-medium text-gray-700">
+                            Épingler cet article
+                            <span class="text-gray-500 font-normal">(apparaîtra toujours en premier)</span>
+                        </span>
+                    </label>
+                    @error('is_pinned')
+                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
+                    <label for="order" class="block text-sm font-medium text-gray-700">
+                        Ordre d'affichage
+                        <span class="text-gray-500 font-normal text-xs">(0 = ordre automatique par date)</span>
+                    </label>
+                    <input type="number" name="order" id="order" value="{{ old('order', 0) }}" min="0"
+                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                    <p class="mt-1 text-xs text-gray-500">Plus le numéro est petit, plus l'article apparaît en premier (ex: 1, 2, 3...)</p>
+                    @error('order')
+                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+
                 <div class="published-date" style="{{ old('status') == 'published' ? '' : 'display: none;' }}">
                     <label for="published_at" class="block text-sm font-medium text-gray-700">Date de publication</label>
                     <input type="datetime-local" name="published_at" id="published_at" value="{{ old('published_at') }}"

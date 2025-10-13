@@ -14,7 +14,8 @@ class Category extends Model
         'name',
         'slug',
         'icon',
-        'description'
+        'description',
+        'order'
     ];
 
     public function posts()
@@ -33,5 +34,12 @@ class Category extends Model
     public function publishedPosts()
     {
         return $this->posts()->where('status', 'published')->orderBy('published_at', 'desc');
+    }
+
+    // Scope for ordered categories
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('order', 'asc')
+                     ->orderBy('name', 'asc');
     }
 }

@@ -88,6 +88,18 @@
                 </div>
 
                 <div>
+                    <label for="order" class="block text-sm font-medium text-gray-700">Ordre d'affichage</label>
+                    <input type="number" name="order" id="order" value="{{ old('order', $project->order) }}" min="0"
+                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                    <p class="mt-1 text-xs text-gray-500">
+                        Plus le numéro est petit, plus le projet apparaît en premier. 0 = ordre automatique par date.
+                    </p>
+                    @error('order')
+                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
                     <label for="link" class="block text-sm font-medium text-gray-700">Lien du projet</label>
                     <div class="mt-1 flex rounded-md shadow-sm">
                         <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">

@@ -14,7 +14,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::latest()->paginate(10);
+        // Utilise le scope ordered() pour afficher dans le même ordre que sur le site
+        $projects = Project::ordered()->paginate(10);
         return view('admin.projects.index', compact('projects'));
     }
 
@@ -23,7 +24,10 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        // Suggérer le prochain numéro d'ordre (max actuel + 1)
+        $nextOrder = Project::max('order') + 1;
+        
+        return view('admin.projects.create', compact('nextOrder'));
     }
 
     /**
@@ -40,6 +44,7 @@ class ProjectController extends Controller
             'github_link' => 'nullable|url',
             'type' => 'required|in:personal,professional,academic',
             'is_featured' => 'nullable|boolean',
+            'order' => 'nullable|integer|min:0',
             'technologies' => 'nullable|array',
             'technologies.*' => 'string',
         ]);
@@ -52,6 +57,7 @@ class ProjectController extends Controller
         $project->github_link = $request->github_link;
         $project->type = $request->type;
         $project->is_featured = $request->has('is_featured');
+        $project->order = $request->order ?? 0;
         $project->technologies = $request->technologies;
 
         // Handle image upload
@@ -96,6 +102,7 @@ class ProjectController extends Controller
             'github_link' => 'nullable|url',
             'type' => 'required|in:personal,professional,academic',
             'is_featured' => 'nullable|boolean',
+            'order' => 'nullable|integer|min:0',
             'technologies' => 'nullable|array',
             'technologies.*' => 'string',
         ]);
@@ -107,6 +114,7 @@ class ProjectController extends Controller
         $project->github_link = $request->github_link;
         $project->type = $request->type;
         $project->is_featured = $request->has('is_featured');
+        $project->order = $request->order ?? 0;
         $project->technologies = $request->technologies;
 
         // Handle image upload

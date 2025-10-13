@@ -18,12 +18,15 @@ class Post extends Model
         'category_id',
         'featured_image',
         'status',
+        'is_pinned',
+        'order',
         'published_at',
         'read_time'
     ];
 
     protected $casts = [
         'published_at' => 'datetime',
+        'is_pinned' => 'boolean',
     ];
 
     public function category()
@@ -57,6 +60,8 @@ class Post extends Model
     {
         return $query->where('status', 'published')
                      ->where('published_at', '<=', now())
+                     ->orderBy('is_pinned', 'desc')
+                     ->orderBy('order', 'asc')
                      ->orderBy('published_at', 'desc');
     }
 
