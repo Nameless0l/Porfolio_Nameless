@@ -94,6 +94,59 @@ class ServiceController extends Controller
     }
 
     /**
+     * Move a service up or down in the order.
+     */
+    public function move(Request $request, Service $service)
+    {
+        $direction = $request->input('direction');
+        
+        // Récupérer tous les services ordonnés
+        $services = Service::ordered()->get();
+        
+        // Trouver l'index du service actuel
+        $currentIndex = $services->search(function($item) use ($service) {
+            return $item->id === $service->id;
+        });
+        
+        if ($currentIndex === false) {
+            return redirect()->route('services.index')
+                ->with('error', 'Service non trouvé.');
+        }
+        
+        // Déterminer l'index du service à échanger
+        $swapIndex = null;
+        if ($direction === 'up' && $currentIndex > 0) {
+            $swapIndex = $currentIndex - 1;
+        } elseif ($direction === 'down' && $currentIndex < $services->count() - 1) {
+            $swapIndex = $currentIndex + 1;
+        }
+        
+        if ($swapIndex !== null) {
+            $swapService = $services[$swapIndex];
+            
+            // Échanger les ordres
+            $tempOrder = $service->order;
+            $service->order = $swapService->order;
+            $swapService->order = $tempOrder;
+            
+            // Si les ordres sont à 0, assigner de nouveaux ordres
+            if ($service->order == 0 && $swapService->order == 0) {
+                // Réassigner tous les ordres
+                $services->each(function($s, $index) {
+                    $s->order = $index + 1;
+                    $s->save();
+                });
+            } else {
+                $service->save();
+                $swapService->save();
+            }
+        }
+        
+        return redirect()->route('services.index')
+            ->with('success', 'Ordre des services mis à jour!');
+    }
+
+    /**
      * Remove the specified resource from storage.
      */
     public function destroy(Service $service)

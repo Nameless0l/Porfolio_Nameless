@@ -61,11 +61,31 @@
                                     <div class="text-sm text-gray-500 truncate" style="max-width: 400px;">{{ $service->description }}</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="flex items-center">
+                                    <div class="flex items-center space-x-2">
                                         <span class="text-sm font-medium text-gray-900">{{ $service->order }}</span>
                                         @if($service->order == 0)
                                             <span class="ml-1 text-xs text-gray-400">(auto)</span>
                                         @endif
+                                        <div class="flex flex-col ml-2">
+                                            @if(!$loop->first)
+                                                <form action="{{ route('services.move', $service) }}" method="POST" class="inline">
+                                                    @csrf
+                                                    <input type="hidden" name="direction" value="up">
+                                                    <button type="submit" class="text-gray-400 hover:text-indigo-600" title="Déplacer vers le haut">
+                                                        <i class="fas fa-chevron-up text-xs"></i>
+                                                    </button>
+                                                </form>
+                                            @endif
+                                            @if(!$loop->last)
+                                                <form action="{{ route('services.move', $service) }}" method="POST" class="inline">
+                                                    @csrf
+                                                    <input type="hidden" name="direction" value="down">
+                                                    <button type="submit" class="text-gray-400 hover:text-indigo-600" title="Déplacer vers le bas">
+                                                        <i class="fas fa-chevron-down text-xs"></i>
+                                                    </button>
+                                                </form>
+                                            @endif
+                                        </div>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
@@ -119,7 +139,8 @@
             <div class="mt-2 text-sm text-blue-700">
                 <ul class="list-disc pl-5 space-y-1">
                     <li>Les services sont affichés dans la section "Ce que je fais" de votre page About Me</li>
-                    <li>Utilisez le champ "Ordre" pour contrôler l'ordre d'affichage (ordre croissant)</li>
+                    <li>Utilisez les flèches <i class="fas fa-chevron-up"></i> <i class="fas fa-chevron-down"></i> dans la colonne "Ordre" pour réorganiser les services</li>
+                    <li>Vous pouvez aussi modifier manuellement le numéro d'ordre dans le formulaire d'édition</li>
                     <li>Les services inactifs ne seront pas visibles sur le portfolio public</li>
                     <li>Vous pouvez utiliser une icône existante ou télécharger une nouvelle icône SVG/PNG</li>
                 </ul>

@@ -57,6 +57,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('experiences', App\Http\Controllers\ExperienceController::class);
         Route::resource('services', App\Http\Controllers\ServiceController::class);
 
+        // Tri des services
+        Route::post('services/{service}/move', [App\Http\Controllers\ServiceController::class, 'move'])->name('services.move');
+
         // Paramètres About Me
         Route::get('about-settings', [App\Http\Controllers\AboutSettingsController::class, 'edit'])->name('about-settings.edit');
         Route::put('about-settings', [App\Http\Controllers\AboutSettingsController::class, 'update'])->name('about-settings.update');
