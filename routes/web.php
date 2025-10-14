@@ -55,6 +55,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('projects', App\Http\Controllers\ProjectController::class);
         Route::resource('skills', App\Http\Controllers\SkillController::class);
         Route::resource('experiences', App\Http\Controllers\ExperienceController::class);
+        Route::resource('services', App\Http\Controllers\ServiceController::class);
+
+        // Paramètres About Me
+        Route::get('about-settings', [App\Http\Controllers\AboutSettingsController::class, 'edit'])->name('about-settings.edit');
+        Route::put('about-settings', [App\Http\Controllers\AboutSettingsController::class, 'update'])->name('about-settings.update');
 
         // Paramètres du site
         Route::get('settings/{group?}', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings.index');

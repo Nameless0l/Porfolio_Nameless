@@ -253,17 +253,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <article class="about active" data-page="about">
 
         <header>
-          <h2 class="h2 article-title">About me</h2>
+          <h2 class="h2 article-title">{{ setting('about_me_title', 'About me') }}</h2>
         </header>
 
         <section class="about-text">
-        <p>
-            Je suis un développeur web fullstack passionné par l'architecture backend, le machine learning et la modélisation de bases de données. Basé à Yaoundé, Cameroun,<br>
-            J'excelle dans la conception de solutions web qui offrent une expérience utilisateur fluide, tout en priorisant la performance et l'évolutivité. Ma force réside dans la transformation de défis techniques complexes en applications intuitives et conviviales.
-        </p>
-        <P>
-            Modélisation de bases de données: Compétence en modélisation conceptuelle, normalisation et optimisation de schémas pour les bases de données SQL.
-        </P>
+          {!! nl2br(e(setting('about_me_description', 'Je suis un développeur web fullstack...'))) !!}
+          
+          @if(setting('about_me_additional'))
+            <p>
+              {!! nl2br(e(setting('about_me_additional'))) !!}
+            </p>
+          @endif
         </section>
 
         <!--
@@ -272,58 +272,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <section class="service">
 
-          <h3 class="h3 service-title">Ce que je fais</h3>
+          <h3 class="h3 service-title">{{ setting('services_section_title', 'Ce que je fais') }}</h3>
 
           <ul class="service-list">
 
-            <li class="service-item">
+            @forelse($services as $service)
+              <li class="service-item">
 
-              <div class="service-icon-box">
-                <img src="{{asset('assets/images/icon-design.svg')}}
-                " alt="design icon" width="40">
-              </div>
+                <div class="service-icon-box">
+                  @if($service->icon)
+                    @if(str_starts_with($service->icon, 'services/'))
+                      <img src="{{ asset('storage/' . $service->icon) }}" alt="{{ $service->title }} icon" width="40">
+                    @else
+                      <img src="{{ asset($service->icon) }}" alt="{{ $service->title }} icon" width="40">
+                    @endif
+                  @else
+                    <img src="{{ asset('assets/images/icon-dev.svg') }}" alt="{{ $service->title }} icon" width="40">
+                  @endif
+                </div>
 
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Développement Backend</h4>
+                <div class="service-content-box">
+                  <h4 class="h4 service-item-title">{{ $service->title }}</h4>
 
-                <p class="service-item-text">
-                    Maîtrise des langages backend Python, PHP. Je conçois des environnements côté serveur robustes et efficaces, des APIs robustes.
-                </p>
-              </div>
+                  <p class="service-item-text">
+                    {{ $service->description }}
+                  </p>
+                </div>
 
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="{{asset('assets/images/icon-dev.svg')}}" alt="developpement web icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Capacité Fullstack</h4>
-
-                <p class="service-item-text">
-                    Compétences front-end (ReactJS, NextJs) lorsque cela est nécessaire pour réaliser des projets web complets.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="{{asset('assets/images/icon-dev.svg')}}" alt="mobile app icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Machine Learning</h4>
-
-                <p class="service-item-text">
-                    Expérimenté dans l'application d'algorithmes de ML (classification, régression) pour construire des fonctionnalités intelligentes et tirer des enseignements à partir des données.
-                </p>
-              </div>
-
-            </li>
+              </li>
+            @empty
+              <li class="service-item">
+                <div class="service-content-box">
+                  <p class="service-item-text text-gray-500">Aucun service n'est configuré pour le moment.</p>
+                </div>
+              </li>
+            @endforelse
 
           </ul>
 

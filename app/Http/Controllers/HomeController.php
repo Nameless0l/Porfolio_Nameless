@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Skill;
+use App\Models\Service;
 use App\Models\Project;
 use App\Models\Category;
 use App\Models\Experience;
@@ -41,12 +42,16 @@ class HomeController extends Controller
         // Récupère les articles publiés (le scope published() gère déjà l'ordre correct)
         $recentPosts = Post::published()->get();
 
+        // Récupère les services actifs
+        $services = Service::active()->ordered()->get();
+
         return view('home', compact(
             'projects',
             'projectTypes',
             'skillsByCategory',
             'experiences',
-            'recentPosts'
+            'recentPosts',
+            'services'
         ));
     }
 

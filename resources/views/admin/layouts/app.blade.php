@@ -50,11 +50,41 @@
                             <span :class="sidebarOpen ? 'block' : 'hidden'" class="ml-2">Mon profil</span>
                         </a>
                     </li>
+                    <li class="mt-4 border-t border-gray-700 pt-4">
+                        <p :class="sidebarOpen ? 'block' : 'hidden'" class="px-4 text-xs text-gray-400 uppercase tracking-wider mb-2">Portfolio</p>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.about-settings.edit') }}" class="flex items-center py-3 px-4 hover:bg-gray-700 {{ request()->routeIs('admin.about-settings.*') ? 'sidebar-active' : '' }}">
+                            <i class="fa-solid fa-id-card w-6"></i>
+                            <span :class="sidebarOpen ? 'block' : 'hidden'" class="ml-2">About Me</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.services.index') }}" class="flex items-center py-3 px-4 hover:bg-gray-700 {{ request()->routeIs('admin.services.*') ? 'sidebar-active' : '' }}">
+                            <i class="fa-solid fa-briefcase w-6"></i>
+                            <span :class="sidebarOpen ? 'block' : 'hidden'" class="ml-2">Services</span>
+                        </a>
+                    </li>
                     <li>
                         <a href="{{ route('admin.projects.index') }}" class="flex items-center py-3 px-4 hover:bg-gray-700 {{ request()->routeIs('admin.projects.*') ? 'sidebar-active' : '' }}">
-                            <i class="fa-solid fa-briefcase w-6"></i>
+                            <i class="fa-solid fa-folder-open w-6"></i>
                             <span :class="sidebarOpen ? 'block' : 'hidden'" class="ml-2">Projets</span>
                         </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.skills.index') }}" class="flex items-center py-3 px-4 hover:bg-gray-700 {{ request()->routeIs('admin.skills.*') ? 'sidebar-active' : '' }}">
+                            <i class="fa-solid fa-code w-6"></i>
+                            <span :class="sidebarOpen ? 'block' : 'hidden'" class="ml-2">Compétences</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.experiences.index') }}" class="flex items-center py-3 px-4 hover:bg-gray-700 {{ request()->routeIs('admin.experiences.*') ? 'sidebar-active' : '' }}">
+                            <i class="fa-solid fa-graduation-cap w-6"></i>
+                            <span :class="sidebarOpen ? 'block' : 'hidden'" class="ml-2">Expériences</span>
+                        </a>
+                    </li>
+                    <li class="mt-4 border-t border-gray-700 pt-4">
+                        <p :class="sidebarOpen ? 'block' : 'hidden'" class="px-4 text-xs text-gray-400 uppercase tracking-wider mb-2">Blog</p>
                     </li>
                     <li>
                         <a href="{{ route('admin.posts.index') }}" class="flex items-center py-3 px-4 hover:bg-gray-700 {{ request()->routeIs('admin.posts.*') ? 'sidebar-active' : '' }}">
@@ -68,25 +98,13 @@
                             <span :class="sidebarOpen ? 'block' : 'hidden'" class="ml-2">Catégories</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ route('admin.skills.index') }}" class="flex items-center py-3 px-4 hover:bg-gray-700 {{ request()->routeIs('admin.skills.*') ? 'sidebar-active' : '' }}">
-                            <i class="fa-solid fa-code w-6"></i>
-                            <span :class="sidebarOpen ? 'block' : 'hidden'" class="ml-2">Compétences</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.experiences.index') }}" class="flex items-center py-3 px-4 hover:bg-gray-700 {{ request()->routeIs('admin.experiences.*') ? 'sidebar-active' : '' }}">
-                            <i class="fa-solid fa-briefcase w-6"></i>
-                            <span :class="sidebarOpen ? 'block' : 'hidden'" class="ml-2">Expériences</span>
-                        </a>
-                    </li>
-                    <li>
+                    <li class="mt-4 border-t border-gray-700 pt-4">
                         <a href="{{ route('admin.settings.index', 'general') }}" class="flex items-center py-3 px-4 hover:bg-gray-700 {{ request()->routeIs('admin.settings.*') && !request()->routeIs('admin.settings.profile') ? 'sidebar-active' : '' }}">
                             <i class="fa-solid fa-cog w-6"></i>
                             <span :class="sidebarOpen ? 'block' : 'hidden'" class="ml-2">Paramètres</span>
                         </a>
                     </li>
-                    <li class="mt-4 border-t border-gray-700 pt-4">
+                    <li>
                         <a href="{{ route('admin.analytics') }}" class="flex items-center py-3 px-4 hover:bg-gray-700 {{ request()->routeIs('admin.analytics') ? 'sidebar-active' : '' }}">
                             <i class="fa-solid fa-chart-line w-6"></i>
                             <span :class="sidebarOpen ? 'block' : 'hidden'" class="ml-2">Statistiques</span>
