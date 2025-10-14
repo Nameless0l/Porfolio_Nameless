@@ -6,7 +6,7 @@
 @section('content')
 <div class="bg-white shadow overflow-hidden sm:rounded-lg">
     <div class="px-4 py-5 sm:p-6">
-        <form action="{{ route('services.update', $service) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.services.update', $service) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -115,7 +115,7 @@
 
             <!-- Boutons d'action -->
             <div class="mt-6 flex items-center justify-end space-x-3">
-                <a href="{{ route('services.index') }}"
+                <a href="{{ route('admin.services.index') }}"
                     class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     <i class="fas fa-times mr-1"></i> Annuler
                 </a>

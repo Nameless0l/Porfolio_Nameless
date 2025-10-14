@@ -6,7 +6,7 @@
 @section('content')
 <div class="mb-6 flex justify-between items-center">
     <h3 class="text-lg font-medium text-gray-900">Liste des services - "Ce que je fais"</h3>
-    <a href="{{ route('services.create') }}" class="bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700">
+    <a href="{{ route('admin.services.create') }}" class="bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700">
         <i class="fas fa-plus mr-2"></i> Ajouter un service
     </a>
 </div>
@@ -68,7 +68,7 @@
                                         @endif
                                         <div class="flex flex-col ml-2">
                                             @if(!$loop->first)
-                                                <form action="{{ route('services.move', $service) }}" method="POST" class="inline">
+                                                <form action="{{ route('admin.services.move', $service) }}" method="POST" class="inline">
                                                     @csrf
                                                     <input type="hidden" name="direction" value="up">
                                                     <button type="submit" class="text-gray-400 hover:text-indigo-600" title="Déplacer vers le haut">
@@ -77,7 +77,7 @@
                                                 </form>
                                             @endif
                                             @if(!$loop->last)
-                                                <form action="{{ route('services.move', $service) }}" method="POST" class="inline">
+                                                <form action="{{ route('admin.services.move', $service) }}" method="POST" class="inline">
                                                     @csrf
                                                     <input type="hidden" name="direction" value="down">
                                                     <button type="submit" class="text-gray-400 hover:text-indigo-600" title="Déplacer vers le bas">
@@ -100,10 +100,10 @@
                                     @endif
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <a href="{{ route('services.edit', $service) }}" class="text-indigo-600 hover:text-indigo-900 mr-3">
+                                    <a href="{{ route('admin.services.edit', $service) }}" class="text-indigo-600 hover:text-indigo-900 mr-3">
                                         <i class="fas fa-edit"></i> Modifier
                                     </a>
-                                    <form class="inline-block" action="{{ route('services.destroy', $service) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce service?');">
+                                    <form class="inline-block" action="{{ route('admin.services.destroy', $service) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce service?');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="text-red-600 hover:text-red-900">
@@ -121,7 +121,7 @@
                 <i class="fas fa-briefcase text-gray-400 text-5xl mb-4"></i>
                 <p class="text-gray-500 mb-2">Aucun service n'a été ajouté.</p>
                 <p class="text-sm text-gray-400 mb-4">Les services apparaissent dans la section "Ce que je fais" de votre portfolio.</p>
-                <a href="{{ route('services.create') }}" class="inline-block text-indigo-600 hover:text-indigo-900">
+                <a href="{{ route('admin.services.create') }}" class="inline-block text-indigo-600 hover:text-indigo-900">
                     <i class="fas fa-plus mr-1"></i> Ajouter votre premier service
                 </a>
             </div>

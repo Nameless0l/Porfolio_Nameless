@@ -21,7 +21,7 @@
             </p>
         </div>
 
-        <form action="{{ route('about-settings.update') }}" method="POST">
+        <form action="{{ route('admin.about-settings.update') }}" method="POST">
             @csrf
             @method('PUT')
 
@@ -103,7 +103,7 @@
                             <h3 class="text-sm font-medium text-blue-800">Note</h3>
                             <div class="mt-2 text-sm text-blue-700">
                                 <p>Les services eux-mêmes (avec leurs icônes et descriptions) se gèrent dans la section
-                                    <a href="{{ route('services.index') }}" class="font-medium underline">Gestion des services</a>.
+                                    <a href="{{ route('admin.services.index') }}" class="font-medium underline">Gestion des services</a>.
                                 </p>
                             </div>
                         </div>

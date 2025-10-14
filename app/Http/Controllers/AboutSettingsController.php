@@ -44,7 +44,7 @@ class AboutSettingsController extends Controller
             );
         }
 
-        return redirect()->route('about-settings.edit')
+        return redirect()->route('admin.about-settings.edit')
             ->with('success', 'Paramètres About Me mis à jour avec succès!');
     }
 }

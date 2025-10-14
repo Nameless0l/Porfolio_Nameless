@@ -49,7 +49,7 @@ class ServiceController extends Controller
 
         Service::create($validated);
 
-        return redirect()->route('services.index')
+        return redirect()->route('admin.services.index')
             ->with('success', 'Service créé avec succès!');
     }
 
@@ -89,7 +89,7 @@ class ServiceController extends Controller
 
         $service->update($validated);
 
-        return redirect()->route('services.index')
+        return redirect()->route('admin.services.index')
             ->with('success', 'Service mis à jour avec succès!');
     }
 
@@ -99,20 +99,20 @@ class ServiceController extends Controller
     public function move(Request $request, Service $service)
     {
         $direction = $request->input('direction');
-        
+
         // Récupérer tous les services ordonnés
         $services = Service::ordered()->get();
-        
+
         // Trouver l'index du service actuel
         $currentIndex = $services->search(function($item) use ($service) {
             return $item->id === $service->id;
         });
-        
+
         if ($currentIndex === false) {
-            return redirect()->route('services.index')
+            return redirect()->route('admin.services.index')
                 ->with('error', 'Service non trouvé.');
         }
-        
+
         // Déterminer l'index du service à échanger
         $swapIndex = null;
         if ($direction === 'up' && $currentIndex > 0) {
@@ -120,15 +120,15 @@ class ServiceController extends Controller
         } elseif ($direction === 'down' && $currentIndex < $services->count() - 1) {
             $swapIndex = $currentIndex + 1;
         }
-        
+
         if ($swapIndex !== null) {
             $swapService = $services[$swapIndex];
-            
+
             // Échanger les ordres
             $tempOrder = $service->order;
             $service->order = $swapService->order;
             $swapService->order = $tempOrder;
-            
+
             // Si les ordres sont à 0, assigner de nouveaux ordres
             if ($service->order == 0 && $swapService->order == 0) {
                 // Réassigner tous les ordres
@@ -141,8 +141,8 @@ class ServiceController extends Controller
                 $swapService->save();
             }
         }
-        
-        return redirect()->route('services.index')
+
+        return redirect()->route('admin.services.index')
             ->with('success', 'Ordre des services mis à jour!');
     }
 
@@ -158,7 +158,7 @@ class ServiceController extends Controller
 
         $service->delete();
 
-        return redirect()->route('services.index')
+        return redirect()->route('admin.services.index')
             ->with('success', 'Service supprimé avec succès!');
     }
 }
