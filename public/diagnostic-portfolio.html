@@ -79,15 +79,15 @@
 </head>
 <body>
     <h1>🔍 Diagnostic Portfolio - Système de Filtrage</h1>
-    
+
     <div class="section">
         <h2>1. Test JavaScript</h2>
         <p>Cliquez sur les boutons pour tester le filtrage :</p>
-        
+
         <button class="btn" data-filter-btn data-filter-value="all">Tous</button>
         <button class="btn" data-filter-btn data-filter-value="personal">Personnel</button>
         <button class="btn" data-filter-btn data-filter-value="professional">Professionnel</button>
-        
+
         <div style="margin-top: 20px;">
             <h3>Projets de test :</h3>
             <div data-filter-item data-category="personal" style="padding: 10px; background: #e0f2fe; margin: 5px; border-radius: 4px;">
@@ -103,7 +103,7 @@
                 💼 Projet Professionnel 2 <code>data-category="professional"</code>
             </div>
         </div>
-        
+
         <div id="test-result" style="margin-top: 20px; padding: 15px; background: #f3f4f6; border-radius: 6px;">
             Statut : En attente du test...
         </div>
@@ -136,7 +136,7 @@ php artisan config:clear</pre>
 
     <script>
         console.log('=== DIAGNOSTIC PORTFOLIO - DEBUT ===');
-        
+
         // Fonction pour logger dans la page
         function logToPage(message, type = 'info') {
             const output = document.getElementById('console-output');
@@ -148,29 +148,29 @@ php artisan config:clear</pre>
 
         // 1. Vérifier que les éléments existent
         logToPage('1. Vérification des éléments DOM...');
-        
+
         const filterButtons = document.querySelectorAll("[data-filter-btn]");
         const filterableItems = document.querySelectorAll("[data-filter-item]");
-        
+
         logToPage(`   ✓ Boutons trouvés: ${filterButtons.length}`, 'success');
         logToPage(`   ✓ Projets trouvés: ${filterableItems.length}`, 'success');
 
         // 2. Vérifier les attributs data-filter-value
         logToPage('2. Vérification des attributs data-filter-value...');
-        
+
         const attributesDiv = document.getElementById('attributes-check');
         let attributesHTML = '<table><thead><tr><th>Élément</th><th>data-filter-value</th><th>Texte</th><th>Statut</th></tr></thead><tbody>';
-        
+
         let allAttributesOK = true;
         filterButtons.forEach((btn, index) => {
             const filterValue = btn.getAttribute('data-filter-value');
             const text = btn.textContent.trim();
             const hasAttribute = filterValue !== null;
-            
+
             if (!hasAttribute && text.toLowerCase() !== 'tous') {
                 allAttributesOK = false;
             }
-            
+
             attributesHTML += `<tr>
                 <td>Bouton ${index + 1}</td>
                 <td><code>${filterValue || '(vide)'}</code></td>
@@ -179,16 +179,16 @@ php artisan config:clear</pre>
                     ${hasAttribute || text.toLowerCase() === 'tous' ? '✓ OK' : '✗ MANQUANT'}
                 </td>
             </tr>`;
-            
+
             logToPage(`   Bouton "${text}": data-filter-value="${filterValue}"`);
         });
-        
+
         attributesHTML += '</tbody></table>';
         attributesDiv.innerHTML = attributesHTML;
 
         // 3. Vérifier les attributs data-category des projets
         logToPage('3. Vérification des attributs data-category...');
-        
+
         filterableItems.forEach((item, index) => {
             const category = item.dataset.category;
             logToPage(`   Projet ${index + 1}: data-category="${category}"`);
@@ -197,9 +197,9 @@ php artisan config:clear</pre>
         // 4. Fonction de filtrage (copie de script.js)
         function filterProjects(filterValue) {
             logToPage(`4. Filtrage avec valeur: "${filterValue}"`, 'info');
-            
+
             let visibleCount = 0;
-            
+
             // Mettre à jour les boutons actifs
             filterButtons.forEach(function (btn) {
                 const buttonValue = btn.getAttribute('data-filter-value') || btn.textContent.toLowerCase().trim();
@@ -216,7 +216,7 @@ php artisan config:clear</pre>
             filterableItems.forEach(function (item) {
                 const itemCategory = item.dataset.category;
                 const shouldShow = filterValue === 'all' || itemCategory === filterValue;
-                
+
                 if (shouldShow) {
                     item.classList.add("active");
                     item.style.display = 'block';
@@ -227,10 +227,10 @@ php artisan config:clear</pre>
                     item.style.display = 'none';
                     item.style.opacity = '0.3';
                 }
-                
+
                 logToPage(`   - Projet ${itemCategory}: ${shouldShow ? 'VISIBLE' : 'MASQUÉ'}`);
             });
-            
+
             const resultDiv = document.getElementById('test-result');
             if (visibleCount > 0) {
                 resultDiv.innerHTML = `<span class="success">✓ SUCCÈS :</span> ${visibleCount} projet(s) affiché(s) pour le filtre "${filterValue}"`;
@@ -246,7 +246,7 @@ php artisan config:clear</pre>
 
         // 5. Ajouter les événements aux boutons de test
         logToPage('5. Ajout des événements de clic...');
-        
+
         filterButtons.forEach(function(btn) {
             btn.addEventListener("click", function () {
                 const filterValue = this.getAttribute('data-filter-value') || this.textContent.toLowerCase().trim();
@@ -254,10 +254,10 @@ php artisan config:clear</pre>
                 filterProjects(filterValue);
             });
         });
-        
+
         logToPage('✓ Événements ajoutés avec succès', 'success');
         logToPage('\n=== DIAGNOSTIC PRÊT - Cliquez sur les boutons pour tester ===', 'success');
-        
+
         // Test automatique au chargement
         setTimeout(() => {
             logToPage('\n=== TEST AUTOMATIQUE ===', 'info');
