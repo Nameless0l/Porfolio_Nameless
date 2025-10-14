@@ -52,6 +52,9 @@ let filterableItems = null;
 let filterSelectBox = null;
 let filterSelectItems = null;
 
+// Log version for debugging
+console.log('Portfolio Filter v2.1 - Script loaded with data-filter-value support');
+
 // Function to initialize filter buttons
 function initFilterButtons() {
   // Only initialize if not already initialized
@@ -61,10 +64,13 @@ function initFilterButtons() {
     filterSelectBox = document.querySelector("[data-select]");
     filterSelectItems = document.querySelectorAll("[data-select-item]");
 
+    console.log(`Found ${filterButtons.length} filter buttons and ${filterableItems.length} filterable items`);
+
     // Add event listeners to filter buttons
     for (let i = 0; i < filterButtons.length; i++) {
       filterButtons[i].addEventListener("click", function () {
         let filterValue = this.getAttribute('data-filter-value') || this.textContent.toLowerCase().trim();
+        console.log(`Filter button clicked: "${this.textContent.trim()}", filter value: "${filterValue}"`);
         filterProjects(filterValue);
 
         // Mettre à jour le hash pour inclure la catégorie
@@ -101,6 +107,9 @@ function initFilterButtons() {
 
 // Function to filter projects
 function filterProjects(filterValue) {
+  console.log(`filterProjects() called with value: "${filterValue}"`);
+  let visibleCount = 0;
+
   for (let i = 0; i < filterButtons.length; i++) {
     let buttonValue = filterButtons[i].getAttribute('data-filter-value') || filterButtons[i].textContent.toLowerCase().trim();
     if (buttonValue === filterValue) {
@@ -111,12 +120,20 @@ function filterProjects(filterValue) {
   }
 
   filterableItems.forEach(function (item) {
-    if (filterValue === 'all' || item.dataset.category === filterValue) {
+    const itemCategory = item.dataset.category;
+    const shouldShow = filterValue === 'all' || itemCategory === filterValue;
+
+    if (shouldShow) {
       item.classList.add("active");
+      visibleCount++;
     } else {
       item.classList.remove("active");
     }
+
+    console.log(`  - Item category: "${itemCategory}", should show: ${shouldShow}`);
   });
+
+  console.log(`Total visible items: ${visibleCount}`);
 }
 
 // Testimonials variables

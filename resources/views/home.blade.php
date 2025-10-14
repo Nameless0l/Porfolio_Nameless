@@ -900,7 +900,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!--
       - custom js link
     -->
-    <script src="{{asset('assets/js/script.js')}}"></script>
+    <script src="{{asset('assets/js/script.js')}}?v={{ time() }}"></script>
 
     <!--
       - ionicon link
