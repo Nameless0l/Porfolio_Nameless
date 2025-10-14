@@ -39,8 +39,8 @@ class ListAboutSettings extends Command
 
         foreach ($settings as $setting) {
             $this->info("🔑 {$setting->key}");
-            $value = strlen($setting->value) > 100 
-                ? substr($setting->value, 0, 100) . '...' 
+            $value = strlen($setting->value) > 100
+                ? substr($setting->value, 0, 100) . '...'
                 : $setting->value;
             $this->line("   {$value}");
             $this->newLine();

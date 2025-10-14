@@ -37,7 +37,7 @@
                     <!-- Icône -->
                     <div>
                         <label for="icon" class="block text-sm font-medium text-gray-700">Icône</label>
-                        
+
                         @if($service->icon)
                             <div class="mt-2 mb-3">
                                 <p class="text-sm text-gray-600 mb-2">Icône actuelle:</p>

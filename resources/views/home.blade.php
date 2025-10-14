@@ -258,7 +258,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <section class="about-text">
           {!! nl2br(e(setting('about_me_description', 'Je suis un développeur web fullstack...'))) !!}
-          
+
           @if(setting('about_me_additional'))
             <p>
               {!! nl2br(e(setting('about_me_additional'))) !!}

@@ -80,7 +80,7 @@ class ServiceController extends Controller
             if ($service->icon && str_starts_with($service->icon, 'services/')) {
                 Storage::disk('public')->delete($service->icon);
             }
-            
+
             $iconPath = $request->file('icon')->store('services', 'public');
             $validated['icon'] = $iconPath;
         }

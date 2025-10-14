@@ -31,7 +31,7 @@
                     <label for="about_me_title" class="block text-sm font-medium text-gray-700">
                         Titre de la section *
                     </label>
-                    <input type="text" name="about_me_title" id="about_me_title" 
+                    <input type="text" name="about_me_title" id="about_me_title"
                         value="{{ old('about_me_title', $settings['about_me_title'] ?? 'About me') }}"
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         required>
@@ -82,7 +82,7 @@
                     <label for="services_section_title" class="block text-sm font-medium text-gray-700">
                         Titre de la section "Ce que je fais" *
                     </label>
-                    <input type="text" name="services_section_title" id="services_section_title" 
+                    <input type="text" name="services_section_title" id="services_section_title"
                         value="{{ old('services_section_title', $settings['services_section_title'] ?? 'Ce que je fais') }}"
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         required>
@@ -102,7 +102,7 @@
                         <div class="ml-3">
                             <h3 class="text-sm font-medium text-blue-800">Note</h3>
                             <div class="mt-2 text-sm text-blue-700">
-                                <p>Les services eux-mêmes (avec leurs icônes et descriptions) se gèrent dans la section 
+                                <p>Les services eux-mêmes (avec leurs icônes et descriptions) se gèrent dans la section
                                     <a href="{{ route('services.index') }}" class="font-medium underline">Gestion des services</a>.
                                 </p>
                             </div>
