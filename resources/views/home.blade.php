@@ -768,7 +768,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             @if(isset($projects) && count($projects) > 0)
               @foreach($projects as $project)
                 <li class="project-item active" data-filter-item data-category="{{ $project->type }}">
-                  <a href="{{ $project->link ?? '#' }}" target="_blank">
+                  <a href="{{ $project->link ?? $project->github_link }}" target="_blank">
                     <figure class="project-img">
                       <div class="project-item-icon-box">
                         <ion-icon name="eye-outline"></ion-icon>
