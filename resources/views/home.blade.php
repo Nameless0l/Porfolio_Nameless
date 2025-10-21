@@ -83,8 +83,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <div class="info-content">
           <h1 class="name" title="{{ $personalSettings['owner_name'] ?? 'Mbassi Loic Aron' }}">{{ $personalSettings['owner_name'] ?? 'Mbassi Loic Aron' }}</h1>
-
-          <p class="title">{{ $personalSettings['owner_title'] ?? 'Développeur Web Full Stack' }}</p>
+        @if (strlen($personalSettings['owner_title']) < 10)
+            <p class="title">{{ $personalSettings['owner_title'] ?? 'Développeur Web Full Stack' }}</p>
+        @else
+            <p class="title">
+              @php
+                  $title = $personalSettings['owner_title'] ?? 'Développeur Web Full Stack';
+                  $brokenTitle = wordwrap($title, 26, "<br />\n", true);
+              @endphp
+              {!! $brokenTitle !!}
+            </p>
+        @endif
         </div>
 
         <button class="info_more-btn" data-sidebar-btn>
