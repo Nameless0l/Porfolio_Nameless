@@ -89,7 +89,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="title">
               @php
                   $title = $personalSettings['owner_title'] ?? 'Développeur Web Full Stack';
-                  $brokenTitle = wordwrap($title, 26, "<br />\n", true);
+                  $brokenTitle = wordwrap($title, 43, "<br />\n", true);
               @endphp
               {!! $brokenTitle !!}
             </p>
